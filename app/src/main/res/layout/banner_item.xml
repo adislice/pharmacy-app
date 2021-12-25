@@ -4,7 +4,10 @@
     android:layout_width="350dp"
     android:layout_height="wrap_content"
     app:cardCornerRadius="25dp"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
