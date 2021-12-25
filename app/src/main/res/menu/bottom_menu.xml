@@ -3,22 +3,22 @@
     <item
         android:id="@+id/menu_home"
         android:title="Beranda"
-        android:icon="@drawable/ic_outline_home_24"
+        android:icon="@drawable/selector_home_icon"
         android:iconTint="@color/black"/>
     <item
         android:id="@+id/menu_obat"
         android:title="Obat"
-        android:icon="@drawable/medication_white_24dp"
+        android:icon="@drawable/selector_obat_icon"
         android:iconTint="@color/black"/>
     <item
         android:id="@+id/menu_alat"
         android:title="Alat Kesehatan"
-        android:icon="@drawable/health_and_safety_white_24dp"
+        android:icon="@drawable/selector_alkes_icon"
         android:iconTint="@color/black"/>
     <item
         android:id="@+id/menu_profile"
         android:title="Profil"
-        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:icon="@drawable/selector_profile_icon"
         android:iconTint="@color/black"/>
 
 </menu>
