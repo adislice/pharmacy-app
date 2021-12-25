@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">Apotekku</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+
+    <!--Login-->
+    <string name="login_failed">"Login failed"</string>
+    <string name="login_et_email_hint">Email Address</string>
+    <string name="login_et_pass_hint">Password</string>
+    <string name="login_title_text">Selamat Datang</string>
+    <string name="login_subtitle_text">di Aplikasi Apotekku</string>
+    <string name="login_forgot_pass_text">Lupa Password?</string>
+    <string name="login_btn_text">Masuk</string>
+    <string name="login_regist_text">Belum punya akun?</string>
+    <string name="login_regist_text_go">Daftar Sekarang</string>
+
+    <!--Pendaftaran Akun-->
+    <string name="regist_title_text">Daftar Akun</string>
+    <string name="regist_hint_nama">Nama Lengkap</string>
+    <string name="regist_hint_email">Alamat Email</string>
+    <string name="regist_hint_notelp">No. Telepon</string>
+    <string name="regist_hint_password">Password</string>
+    <string name="regist_hint_confirm_password">Konfirmasi Password</string>
+    <string name="regist_tos">Saya telah membaca dan menyetujui Kebijakan Privasi dan Aturan Penggunaan Aplikasi ini</string>
+    <string name="regist_btn_text">Daftar</string>
+
+    <!--Lupa Kata Sandi-->
+    <string name="forgot_pass_title">Lupa Kata Sandi?</string>
+    <string name="forgot_pass_subtitle">Masukkan Email atau Nomor telepon Anda yang terdaftar di bawah ini. Kami akan mengirimkan link untuk mereset kata sandi Anda</string>
+    <string name="forgot_pass_hint">Email / No. Telp</string>
+    <string name="forgot_pass_btn">Lupa Password</string>
+
+    <!--Dashboard-->
+    <string name="dashboard_title">Apotekku</string>
+    <string name="dashboard_subtitle">Sahabat Anda melawan penyakit</string>
+    <string name="dashboard_keranjang_desc">Keranjang</string>
+    <string name="dashboard_search_desc">Pencarian</string>
+    <string name="dashboard_category_see_all">Lihat Semua</string>
+    <string name="dashboard_category_1">Daftar Obat</string>
+    <string name="dashboard_category_2">Alat Kesehatan</string>
+
 </resources>
