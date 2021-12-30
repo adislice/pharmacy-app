@@ -10,14 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Apotek">
         <activity
-            android:name=".DetailObatActivity"
-            android:exported="false" />
+            android:name=".DetailProdukActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Apotek.NoActionBar" />
         <activity
             android:name=".ForgotPassActivity"
             android:exported="false"
             android:theme="@style/Theme.Apotek.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Apotek.NoActionBar" />
+        <activity
+            android:name=".ProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.Apotek.NoActionBar" />
         <activity

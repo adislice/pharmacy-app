@@ -95,7 +95,7 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".DetailObatActivity">
+                tools:context=".DetailProdukActivity">
 
                 <ImageView
                     android:id="@+id/produk_gambar"
@@ -213,8 +213,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:padding="@dimen/pad_md">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -222,7 +221,8 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/pad_sm">
 
             <ImageButton
                 android:id="@+id/produk_qty_kurang"
@@ -269,7 +269,8 @@
             android:background="@drawable/bg_btn"
             android:textColor="@color/white"
             android:paddingStart="@dimen/pad_md"
-            android:paddingEnd="@dimen/pad_md"/>
+            android:paddingEnd="@dimen/pad_md"
+            android:layout_margin="@dimen/pad_md"/>
 
     </android.support.constraint.ConstraintLayout>
 
