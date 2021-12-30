@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".KeranjangActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/et_height"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/keranjang_title"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/text_lg"
+            android:textStyle="bold"
+            android:fontFamily="@font/playfair_display_bold"/>
+
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/cb_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/keranjang_select_all"
+        android:fontFamily="@font/montserrat"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_produk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/div_footer"
+            android:layout_marginHorizontal="15dp" />
+
+        <RelativeLayout
+            android:id="@+id/div_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/keranjang_subtotal"
+                    android:fontFamily="@font/montserrat"
+                    android:textSize="@dimen/text_md"/>
+
+                <TextView
+                    android:id="@+id/tv_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/keranjang_harga_subtotal"
+                    android:textColor="@color/bg_btn"
+                    android:textSize="@dimen/text_md"
+                    android:fontFamily="@font/montserrat"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_bayar"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bg_btn"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/keranjang_btn_bayar"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_md"
+                android:fontFamily="@font/montserrat"
+                android:textAllCaps="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

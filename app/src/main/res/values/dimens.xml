@@ -12,6 +12,7 @@
 
     <!--Edit Text-->
     <dimen name="et_height">48dp</dimen>
+    <dimen name="qty_add">32dp</dimen>
 
     <!--Text Size-->
     <dimen name="text_sm">8sp</dimen>

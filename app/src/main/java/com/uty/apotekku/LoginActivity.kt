@@ -58,22 +58,22 @@ class LoginActivity : AppCompatActivity() {
         })
 
         btnLogin.setOnClickListener {
-            val email = etEmail.text.toString()
-            val password = etPass.text.toString()
-
-            if(email == "user" && password == "user") {
+//            val email = etEmail.text.toString()
+//            val password = etPass.text.toString()
+//
+//            if(email == "user" && password == "user") {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-            } else if (email.isEmpty()) {
-                etEmail.error = "Required"
-                Toast.makeText(applicationContext,"Email tidak boleh kosong", Toast.LENGTH_SHORT).show()
-            } else if (password.isEmpty()) {
-                etPass.error = "Required"
-                Toast.makeText(applicationContext,"Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(applicationContext,"Email atau password salah", Toast.LENGTH_SHORT).show()
-            }
+//            } else if (email.isEmpty()) {
+//                etEmail.error = "Required"
+//                Toast.makeText(applicationContext,"Email tidak boleh kosong", Toast.LENGTH_SHORT).show()
+//            } else if (password.isEmpty()) {
+//                etPass.error = "Required"
+//                Toast.makeText(applicationContext,"Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+//            } else {
+//                Toast.makeText(applicationContext,"Email atau password salah", Toast.LENGTH_SHORT).show()
+//            }
         }
 
         txtRegist.setOnClickListener{

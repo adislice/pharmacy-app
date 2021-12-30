@@ -14,5 +14,4 @@
     <style name="Theme.Apotek.Dashboard">
         <item name="android:windowLightStatusBar">true</item>
     </style>
-
 </resources>

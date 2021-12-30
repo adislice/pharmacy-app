@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/keranjang_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="2dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/img_produk"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/bisolvon_extra"
+                android:contentDescription="@string/keranjang_gambar_produk" />
+
+            <TextView
+                android:id="@+id/tv_nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:ellipsize="marquee"
+                android:lines="2"
+                android:maxLines="3"
+                android:text="@string/keranjang_nama_produk"
+                android:textColor="@color/text_main"
+                android:fontFamily="@font/montserrat"
+                android:textSize="@dimen/text_md"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_baseline_delete_24"
+                android:contentDescription="@string/keranjang_tombol_hapus_produk" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_harga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:ellipsize="marquee"
+                    android:text="@string/keranjang_harga"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_md"
+                    android:fontFamily="@font/montserrat"
+                    android:scrollbarSize="@dimen/text_md"/>
+
+                <RelativeLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_btn"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/btn_kurang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="5dp"
+                        app:srcCompat="@drawable/ic_baseline_remove_24"
+                        android:contentDescription="@string/keranjang_kurangi_jumlah_produk" />
+
+                    <EditText
+                        android:id="@+id/et_jumlah"
+                        android:layout_width="@dimen/et_height"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="@string/keranjang_default_qty"
+                        android:textColor="@color/text_main"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_md"
+                        android:fontFamily="@font/montserrat" />
+
+                    <ImageView
+                        android:id="@+id/btn_tambah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/ic_baseline_add_24"
+                        android:contentDescription="@string/keranjang_tambah_jumlah_produk" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
