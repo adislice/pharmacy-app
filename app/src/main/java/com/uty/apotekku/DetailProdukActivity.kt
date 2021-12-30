@@ -22,24 +22,14 @@ class DetailProdukActivity : AppCompatActivity() {
         etqty = findViewById(R.id.produk_qty)
         var qty: Int = etqty.text.toString().toInt()
 
-        btnback.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+        btnback.setOnClickListener {finish()}
+        btnchart.setOnClickListener {bukaKeranjang()}
+        btntambah.setOnClickListener {qty += 1}
+        btnkurang.setOnClickListener {qty -= 1}
+    }
 
-        btnchart.setOnClickListener {
-            val intent = Intent(this, KeranjangActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        btntambah.setOnClickListener {
-            qty += 1
-        }
-
-        btnkurang.setOnClickListener {
-            qty -= 1
-        }
+    private fun bukaKeranjang(){
+        val intent = Intent(this, KeranjangActivity::class.java)
+        startActivity(intent)
     }
 }
