@@ -141,6 +141,7 @@
                         android:padding="@dimen/pad_sm"
                         android:text="@string/detail_produk_harga_awal"
                         android:textSize="@dimen/text_md"
+                        android:background="@drawable/shape_strikethrough"
                         app:layout_constraintLeft_toRightOf="@+id/produk_diskon"
                         app:layout_constraintTop_toTopOf="parent" />
 
