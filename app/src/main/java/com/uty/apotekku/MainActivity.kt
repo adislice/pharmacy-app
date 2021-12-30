@@ -1,9 +1,11 @@
 package com.uty.apotekku
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         val bannerView: RecyclerView = findViewById(R.id.banner_rview)
         val obatView: RecyclerView = findViewById(R.id.obat_list_rview)
         val alatView: RecyclerView = findViewById(R.id.alat_list_rview)
+        val btnKeranjang: ImageButton = findViewById(R.id.btn_keranjang)
 
         val bannerList = ArrayList<BannerModel>()
         bannerList.add(BannerModel("Konsumsi Buah-buahan Dapat Membantu Meringankan Stress", R.drawable.buah))
@@ -59,6 +62,11 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = alatViewAdapter
             layoutManager = alatViewManager
+        }
+
+        btnKeranjang.setOnClickListener{
+            val intent = Intent(this, KeranjangActivity::class.java)
+            startActivity(intent)
         }
     }
 }

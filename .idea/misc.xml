@@ -10,6 +10,20 @@
         <entry key="..\:/PROJECT/Android Studio/Apotek/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/PROJECT/Android Studio/Apotek/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/PROJECT/Android Studio/Apotek/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/drawable/bg_btn_qty.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/drawable/bg_diskon.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/drawable/bg_et_qty.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/drawable/ic_baseline_chevron_left_24.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/drawable/ic_round_chevron_left_24.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/drawable/ic_round_chevron_right_24.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/activity_detail_obat.xml" value="0.2" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/activity_keranjang.xml" value="0.33" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/activity_main.xml" value="0.18478260869565216" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/banner_item.xml" value="0.17753623188405798" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/fragment_keranjang.xml" value="0.1" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_detail_produk.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_keranjang.xml" value="0.25" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

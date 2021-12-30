@@ -44,5 +44,35 @@
     <string name="dashboard_category_see_all">Lihat Semua</string>
     <string name="dashboard_category_1">Daftar Obat</string>
     <string name="dashboard_category_2">Alat Kesehatan</string>
+    <string name="keranjang_harga">Harga barang</string>
+    <string name="keranjang_nama_produk">Nama Produk</string>
+    <string name="keranjang_gambar_produk">Gambar produk</string>
+    <string name="keranjang_tombol_hapus_produk">Hapus produk</string>
+    <string name="keranjang_kurangi_jumlah_produk">Kurangi jumlah produk</string>
+    <string name="keranjang_tambah_jumlah_produk">Tambah jumlah produk</string>
+    <string name="keranjang_default_qty">1</string>
+    <string name="keranjang_btn_bayar">Bayar</string>
+    <string name="keranjang_subtotal">Subtotal</string>
+    <string name="keranjang_harga_subtotal">Rp.10.000</string>
+    <string name="keranjang_select_all">Select All</string>
+    <string name="keranjang_title">Keranjang</string>
+    <string name="detail_produk_title">Detail Produk</string>
+    <string name="detail_produk_desc_tombol_ke_keranjang">Tombol ke keranjang</string>
+    <string name="detail_produk_desc_tombol_kembali">Tombol kembali</string>
+    <string name="detail_produk_desc_gambar_produk">Komponen untuk gambar produk</string>
+    <string name="detail_produk_diskon">20%</string>
+    <string name="detail_produk_desc_diskon">Diskon Produk</string>
+    <string name="detail_produk_harga_awal">Rp 10.000</string>
+    <string name="detail_produk_desc_harga_awal">Harga Produk Sebelum Didiskon</string>
+    <string name="detail_produk_harga_final">Rp 8.000</string>
+    <string name="detail_produk_desc_harga_final">Harga Produk Sesudah Didiskon</string>
+    <string name="detail_produk_nama_produk">Bisolvon Extra</string>
+    <string name="detail_produk_desc_nama_produk">Nama Produk</string>
+    <string name="detail_produk_desc_tombol_kurangi_qty">Tombol kurangi kuantitas</string>
+    <string name="detail_produk_qty_default">1</string>
+    <string name="detail_produk_desc_tombol_tambah_qty">Tombol tambah kuantitas</string>
+    <string name="detail_produk_tambah_ke_keranjang">Tambah ke keranjang</string>
+    <string name="detail_produk_jenis_obat">Sirup</string>
+    <string name="detail_produk_deskripsi">STIMUNO FORTE CAP 30S membantu memperbaiki sistem kekebalan tubuh serta membantu merangsang tubuh memproduksi lebih banyak antibodi.</string>
 
 </resources>

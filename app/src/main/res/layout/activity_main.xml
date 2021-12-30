@@ -78,6 +78,7 @@
                             android:background="?android:attr/selectableItemBackgroundBorderless"
                             android:contentDescription="@string/dashboard_search_desc" />
                         <ImageButton
+                            android:id="@+id/btn_keranjang"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:scaleType="fitCenter"

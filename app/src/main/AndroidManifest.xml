@@ -10,17 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Apotek">
         <activity
+            android:name=".DetailObatActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPassActivity"
             android:exported="false"
-            android:theme="@style/Theme.Apotek.NoActionBar"/>
+            android:theme="@style/Theme.Apotek.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
-            android:theme="@style/Theme.Apotek.NoActionBar"/>
+            android:theme="@style/Theme.Apotek.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Apotek.NoActionBar"/>
+            android:theme="@style/Theme.Apotek.NoActionBar" />
+        <activity
+            android:name=".KeranjangActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Apotek.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"

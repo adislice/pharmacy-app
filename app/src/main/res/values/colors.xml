@@ -14,6 +14,7 @@
     <color name="text_main">#212121</color>
     <color name="text_sub">#757575</color>
     <color name="hint_color">#616161</color>
+    <color name="text_harga_detail_produk">#E53935</color>
 
     <!--Warna Komponen-->
     <color name="bg_btn">#333333</color>
