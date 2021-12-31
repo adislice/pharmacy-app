@@ -77,11 +77,11 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_obat -> {
-                    bukaDetailProduk()
+                    bukaDaftarObat()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_alat -> {
-                    // put your code here
+                    bukaDaftarAlkes()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_profile -> {
@@ -104,8 +104,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun bukaDetailProduk(){
-        val intent = Intent(this, DetailProdukActivity::class.java)
+    private fun bukaDaftarObat(){
+        val intent = Intent(this, DaftarObatActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun bukaDaftarAlkes(){
+        val intent = Intent(this, DaftarAlkesActivity::class.java)
         startActivity(intent)
     }
 }
