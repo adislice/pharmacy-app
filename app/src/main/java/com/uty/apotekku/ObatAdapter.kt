@@ -1,6 +1,7 @@
 package com.uty.apotekku
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,11 @@ open class ObatAdapter(private val list: ArrayList<ObatModel>, open var limit: I
         holder.image.setImageResource(list[position].image)
         holder.jenis.text = list[position].jenis
         holder.harga.text = "Rp. " + list[position].harga
+        holder.itemView.setOnClickListener {
+            val ctx = holder.itemView.context
+            val intent = Intent(ctx, DetailProdukActivity::class.java)
+            ctx.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = if(limit > 0) limit else list.size
