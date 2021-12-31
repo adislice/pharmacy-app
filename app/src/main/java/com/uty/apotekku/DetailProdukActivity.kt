@@ -24,6 +24,7 @@ class DetailProdukActivity : AppCompatActivity() {
 
         btnback.setOnClickListener {finish()}
         btnchart.setOnClickListener {bukaKeranjang()}
+
         btntambah.setOnClickListener {qty += 1}
         btnkurang.setOnClickListener {qty -= 1}
     }

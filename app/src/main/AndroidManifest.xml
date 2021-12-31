@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Apotek">
         <activity
+            android:name=".CheckoutActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Apotek.NoActionBar" />
+        <activity
             android:name=".DetailProdukActivity"
             android:exported="false"
             android:theme="@style/Theme.Apotek.NoActionBar" />

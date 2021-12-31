@@ -1,9 +1,11 @@
 package com.uty.apotekku
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.Button
 
 class KeranjangActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,6 +13,7 @@ class KeranjangActivity : AppCompatActivity() {
         setContentView(R.layout.activity_keranjang)
 
         val keranjangView: RecyclerView = findViewById(R.id.rv_produk)
+        val btnbayar: Button = findViewById(R.id.btn_bayar)
 
         val keranjangList = ArrayList<KeranjangModel>()
         keranjangList.add(KeranjangModel("Bisolvon Extra",10000,1))
@@ -27,5 +30,12 @@ class KeranjangActivity : AppCompatActivity() {
             adapter = keranjangViewAdapter
             layoutManager = keranjangViewManager
         }
+
+        btnbayar.setOnClickListener{prosesCheckout()}
+    }
+
+    private fun prosesCheckout(){
+        val intent = Intent(this, CheckoutActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/pad_md">
+
+    <ImageView
+        android:id="@+id/checkout_gambar_produk"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/bisolvon_extra"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Gambar produk yang dicheckout" />
+
+    <TextView
+        android:id="@+id/checkout_qty_produk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:textColor="@color/text_harga_detail_produk"
+        app:layout_constraintStart_toEndOf="@+id/checkout_gambar_produk"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/pad_sm"
+        android:fontFamily="@font/montserrat"/>
+
+
+    <TextView
+        android:id="@+id/checkout_nama_produk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bisolvon Extra"
+        android:textColor="@color/text_main"
+        app:layout_constraintStart_toEndOf="@+id/checkout_qty_produk"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/pad_sm"
+        android:fontFamily="@font/montserrat"/>
+
+    <TextView
+        android:id="@+id/checkout_harga_produk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Rp 10.000"
+        android:textColor="@color/text_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

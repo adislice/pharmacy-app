@@ -20,6 +20,7 @@
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/drawable/ic_round_chevron_right_24.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/drawable/ic_round_shopping_64.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/drawable/ic_shopping.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/activity_checkout.xml" value="0.25" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/activity_detail_obat.xml" value="0.2" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/activity_detail_produk.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/activity_keranjang.xml" value="0.33" />
@@ -28,11 +29,14 @@
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/banner_item.xml" value="0.17753623188405798" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/fragment_keranjang.xml" value="0.1" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_add.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_checkout_hitungan.xml" value="0.5" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_detail_produk.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_email.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_image.xml" value="0.18" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_info.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_keranjang.xml" value="0.25" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/item_produk_checkout.xml" value="0.75" />
+        <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/layout/obat_item_list.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/GITHUB/pharmacy-app/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
       </map>
     </option>

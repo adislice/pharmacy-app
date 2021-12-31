@@ -19,4 +19,5 @@
     <!--Warna Komponen-->
     <color name="bg_btn">#333333</color>
     <color name="bg_btn_disabled">#FF979797</color>
+    <color name="col_separator">#C6C6C6</color>
 </resources>
