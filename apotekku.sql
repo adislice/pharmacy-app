@@ -25,7 +25,7 @@ CREATE TABLE `alkes` (
   `nama_alkes` varchar(255) NOT NULL,
   `harga` int(11) NOT NULL,
   `diskon` int(11) NOT NULL,
-  `gambar` text NOT NULL,
+  `gambar` varchar(255) NOT NULL,
   `deskripsi` text DEFAULT NULL,
   PRIMARY KEY (`id_alkes`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
@@ -78,7 +78,7 @@ CREATE TABLE `obat` (
   `harga` int(11) NOT NULL,
   `jenis_obat` enum('Sirup','Tablet','Oles') NOT NULL,
   `diskon` int(11) NOT NULL,
-  `gambar` text NOT NULL,
+  `gambar` varchar(255) NOT NULL,
   `deskripsi` text DEFAULT NULL,
   PRIMARY KEY (`id_obat`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
