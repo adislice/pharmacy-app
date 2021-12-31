@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
 class DetailProdukActivity : AppCompatActivity() {
 
@@ -26,6 +28,14 @@ class DetailProdukActivity : AppCompatActivity() {
         btnchart.setOnClickListener {bukaKeranjang()}
         btntambah.setOnClickListener {qty += 1}
         btnkurang.setOnClickListener {qty -= 1}
+
+        val produkGambar = findViewById<ImageView>(R.id.produk_gambar)
+        val img = "https://storage.googleapis.com/rxstorage/Product/large/Apotek_Online_Farmaku.com_Promag_Tablet.jpg"
+        Glide.with(this)
+            .load(img)
+            .placeholder(R.drawable.ic_launcher_background)
+            .into(produkGambar)
+
     }
 
     private fun bukaKeranjang(){

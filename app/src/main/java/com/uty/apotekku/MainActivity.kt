@@ -7,15 +7,28 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageButton
+import android.widget.Toast
+import com.uty.apotekku.API.APIRequestData
+import com.uty.apotekku.API.RetroServer
+import com.uty.apotekku.Model.ObatDataModel
+import com.uty.apotekku.Model.ObatResponseModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import com.uty.apotekku.Adapter.ObatAdapter as NewObatAdapter
 
 class MainActivity : AppCompatActivity() {
+    private var obatList = ArrayList<ObatDataModel>()
+    private lateinit var obatViewAdapter: RecyclerView.Adapter<*>
+    private lateinit var obatView: RecyclerView
+    private lateinit var obatViewManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val bannerView: RecyclerView = findViewById(R.id.banner_rview)
-        val obatView: RecyclerView = findViewById(R.id.obat_list_rview)
+
         val alatView: RecyclerView = findViewById(R.id.alat_list_rview)
         val btnKeranjang: ImageButton = findViewById(R.id.btn_keranjang)
         val menuBar: BottomNavigationView = findViewById(R.id.bottom_nav)
@@ -33,22 +46,23 @@ class MainActivity : AppCompatActivity() {
             adapter = bannerViewAdapter
             layoutManager = bannerViewManager
         }
+        obatView = findViewById(R.id.obat_list_rview)
+        obatViewManager = LinearLayoutManager(this)
+        val obatList = ArrayList<ObatDataModel>()
+//        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
+//        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
+//        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
+//        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
+//        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
+//        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
 
-        val obatList = ArrayList<ObatModel>()
-        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
-        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
-        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
-        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
-        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
-        obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
+//         = NewObatAdapter(obatList,5)
 
-        val obatViewAdapter: RecyclerView.Adapter<*> = ObatAdapter(obatList,5)
-        val obatViewManager = LinearLayoutManager(this)
-        obatView.apply {
-            setHasFixedSize(true)
-            adapter = obatViewAdapter
-            layoutManager = obatViewManager
-        }
+//        obatView.apply {
+//            setHasFixedSize(true)
+//            adapter = obatViewAdapter
+//            layoutManager = obatViewManager
+//        }
 
         val alatList = ArrayList<ObatModel>()
         alatList.add(ObatModel("Masker 3-ply Hygenix (isi 50)", "Perlengkapan", "50000", R.drawable.masker))
@@ -92,6 +106,8 @@ class MainActivity : AppCompatActivity() {
             false
         }
         menuBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        retriveDataObat()
     }
 
     private fun bukaProfil(){
@@ -107,5 +123,35 @@ class MainActivity : AppCompatActivity() {
     private fun bukaDetailProduk(){
         val intent = Intent(this, DetailProdukActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun retriveDataObat(){
+        var ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
+        var tampilData: Call<ObatResponseModel> = ardData.ardRetriveData("get_daftar_obat")
+        tampilData.enqueue(object: Callback<ObatResponseModel> {
+            override fun onResponse(
+                call: Call<ObatResponseModel>,
+                response: Response<ObatResponseModel>
+            ) {
+                val status = response.body()?.status.toString()
+                Toast.makeText(this@MainActivity, "Status : "+status,Toast.LENGTH_SHORT)
+                    .show()
+                obatList = response.body()!!.result
+                obatViewAdapter = NewObatAdapter(obatList, 5)
+                obatView.apply {
+                    setHasFixedSize(true)
+                    adapter = obatViewAdapter
+                    layoutManager = obatViewManager
+                }
+                obatViewAdapter.notifyDataSetChanged()
+            }
+
+            override fun onFailure(call: Call<ObatResponseModel>, t: Throwable) {
+                Toast.makeText(this@MainActivity, "gagal menghubungkan ke server", Toast.LENGTH_SHORT)
+                    .show()
+
+            }
+
+        })
     }
 }
