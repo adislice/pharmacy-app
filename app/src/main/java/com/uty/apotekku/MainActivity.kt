@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         }
         menuBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        retriveDataObat()
+        retrieveDataObat()
     }
 
     private fun bukaProfil(){
@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun retriveDataObat(){
+    private fun retrieveDataObat(){
         var ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
         var tampilData: Call<ObatResponseModel> = ardData.ardRetriveData("get_daftar_obat")
         tampilData.enqueue(object: Callback<ObatResponseModel> {
@@ -134,8 +134,8 @@ class MainActivity : AppCompatActivity() {
                 response: Response<ObatResponseModel>
             ) {
                 val status = response.body()?.status.toString()
-                Toast.makeText(this@MainActivity, "Status : "+status,Toast.LENGTH_SHORT)
-                    .show()
+//                Toast.makeText(this@MainActivity, "Status : "+status,Toast.LENGTH_SHORT)
+//                    .show()
                 obatList = response.body()!!.result
                 obatViewAdapter = NewObatAdapter(obatList, 5)
                 obatView.apply {

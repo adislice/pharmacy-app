@@ -13,4 +13,8 @@ interface APIRequestData {
     @POST("api.php")
     @FormUrlEncoded
     fun ardRetriveData(@Field("aksi") aksi: String): Call<ObatResponseModel>
+
+    @POST("api.php")
+    @FormUrlEncoded
+    fun getDetailObat(@Field("aksi") aksi: String, @Field("id_obat") id_obat: Int): Call<ObatResponseModel>
 }

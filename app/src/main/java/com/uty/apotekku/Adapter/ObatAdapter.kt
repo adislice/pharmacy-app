@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uty.apotekku.DetailProdukActivity
 import com.uty.apotekku.Model.ObatDataModel
 import com.uty.apotekku.R
@@ -34,17 +35,20 @@ open class ObatAdapter(private val list: ArrayList<ObatDataModel>, open var limi
 //        holder.obat_image.setImageResource(list[position].gambar)
         holder.obat_jenis.text = list[position].jenis_obat
         holder.obat_harga.text = "Rp. " + list[position].harga
-        Toast.makeText(holder.itemView.context,img, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(holder.itemView.context,img, Toast.LENGTH_SHORT).show()
         Glide.with(holder.itemView.context)
             .load(img)
-            .placeholder(R.drawable.ic_launcher_background)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .placeholder(R.color.white)
             .into(holder.itemView.findViewById(R.id.obat_image))
         holder.itemView.setOnClickListener {
             val ctx = holder.itemView.context
             val intent = Intent(ctx, DetailProdukActivity::class.java)
+            intent.putExtra("id_obat", list[position].id_obat)
+            intent.putExtra("kategori", "obat")
             ctx.startActivity(intent)
         }
     }
 
-    override fun getItemCount(): Int =  list.size
+    override fun getItemCount(): Int =  if(limit > 0 && list.size >= limit) limit else list.size
 }
