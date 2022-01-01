@@ -1,11 +1,11 @@
 package com.uty.apotekku
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +26,11 @@ class MainActivity : AppCompatActivity() {
         bannerList.add(BannerModel("Jangan Terlalu Banyak Begadang, Ketahui Resikonya", R.drawable.buah))
 
         val bannerViewAdapter : RecyclerView.Adapter<*> = BannerAdapter(bannerList)
-        val bannerViewManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val bannerViewManager = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
 
         bannerView.apply {
             setHasFixedSize(true)
@@ -43,7 +47,8 @@ class MainActivity : AppCompatActivity() {
         obatList.add(ObatModel("Bisolvon Extra", "Sirup", "20000", R.drawable.bisolvon_extra))
 
         val obatViewAdapter: RecyclerView.Adapter<*> = ObatAdapter(obatList,5)
-        val obatViewManager = LinearLayoutManager(this)
+        val obatViewManager =
+            LinearLayoutManager(this)
         obatView.apply {
             setHasFixedSize(true)
             adapter = obatViewAdapter
@@ -59,7 +64,8 @@ class MainActivity : AppCompatActivity() {
         alatList.add(ObatModel("Masker 3-ply Hygenix (isi 50)", "Perlengkapan", "50000", R.drawable.masker))
 
         val alatViewAdapter: RecyclerView.Adapter<*> = ObatAdapter(alatList, 5)
-        val alatViewManager = LinearLayoutManager(this)
+        val alatViewManager =
+            LinearLayoutManager(this)
         alatView.apply {
             setHasFixedSize(true)
             adapter = alatViewAdapter

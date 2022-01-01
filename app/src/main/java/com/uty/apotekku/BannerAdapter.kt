@@ -1,13 +1,14 @@
 package com.uty.apotekku
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 
-class BannerAdapter(private val list: ArrayList<BannerModel>):RecyclerView.Adapter<BannerAdapter.Holder>() {
+class BannerAdapter(private val list: ArrayList<BannerModel>):
+    RecyclerView.Adapter<BannerAdapter.Holder>() {
     class Holder (view: View): RecyclerView.ViewHolder(view){
         val title: TextView = view.findViewById(R.id.banner_textview)
         val image: ImageView = view.findViewById(R.id.banner_image_view)

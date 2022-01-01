@@ -1,7 +1,12 @@
 package com.uty.apotekku
 
 import android.annotation.SuppressLint
+<<<<<<< Updated upstream
 import android.support.v7.widget.RecyclerView
+=======
+import android.content.Intent
+import androidx.recyclerview.widget.RecyclerView
+>>>>>>> Stashed changes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
