@@ -1,9 +1,11 @@
 package com.uty.apotekku
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.ImageButton
 
 class DaftarAlkesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +14,12 @@ class DaftarAlkesActivity : AppCompatActivity() {
 
         val detailProdukObat: RecyclerView = findViewById(R.id.rv_daftar_obat)
         val daftarProdukList = ArrayList<DaftarProdukModel>()
+        val btnback: ImageButton = findViewById(R.id.produk_back)
+        val btnkeranjang: ImageButton = findViewById(R.id.produk_keranjang)
+
+        btnback.setOnClickListener {finish()}
+        btnkeranjang.setOnClickListener {bukaKeranjang()}
+
         daftarProdukList.add(DaftarProdukModel("Masker 3-ply Hygenix (isi 50)", 20, 20000, R.drawable.masker))
         daftarProdukList.add(DaftarProdukModel("Masker 3-ply Hygenix (isi 50)", 20, 20000, R.drawable.masker))
         daftarProdukList.add(DaftarProdukModel("Masker 3-ply Hygenix (isi 50)", 20, 20000, R.drawable.masker))
@@ -30,5 +38,10 @@ class DaftarAlkesActivity : AppCompatActivity() {
             adapter = detailProdukViewAdapter
             layoutManager = detailProdukViewManager
         }
+    }
+
+    private fun bukaKeranjang(){
+        val intent = Intent(this@DaftarAlkesActivity, KeranjangActivity::class.java)
+        startActivity(intent)
     }
 }

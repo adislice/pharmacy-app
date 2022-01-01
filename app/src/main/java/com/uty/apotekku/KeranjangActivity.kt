@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Button
+import android.widget.ImageButton
 
 class KeranjangActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +15,7 @@ class KeranjangActivity : AppCompatActivity() {
 
         val keranjangView: RecyclerView = findViewById(R.id.rv_produk)
         val btnbayar: Button = findViewById(R.id.btn_bayar)
+        val btnback: ImageButton = findViewById(R.id.keranjang_back)
 
         val keranjangList = ArrayList<KeranjangModel>()
         keranjangList.add(KeranjangModel("Bisolvon Extra",10000,1))
@@ -32,6 +34,7 @@ class KeranjangActivity : AppCompatActivity() {
         }
 
         btnbayar.setOnClickListener{prosesCheckout()}
+        btnback.setOnClickListener {finish()}
     }
 
     private fun prosesCheckout(){
