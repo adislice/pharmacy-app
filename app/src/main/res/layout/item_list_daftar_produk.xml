@@ -6,7 +6,7 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_margin="@dimen/pad_md"
         android:elevation="@dimen/pad_md"
         app:cardCornerRadius="@dimen/pad_md"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -24,41 +24,49 @@
                 android:id="@+id/daftar_gambar_produk"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/bisolvon_extra" />
+                android:src="@drawable/bisolvon_extra"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/daftar_nama_produk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pad_sm"
-                android:layout_marginTop="@dimen/pad_sm"
-                android:layout_marginEnd="@dimen/pad_sm"
                 android:ellipsize="end"
                 android:fontFamily="@font/montserrat"
                 android:maxLines="2"
-                android:text="Bisolvon Extra"
+                android:text="KONTOLODOOONNNNNNNNNNNNNNNNNNNN"
                 android:textColor="@color/text_main"
-                android:textSize="@dimen/text_md" />
+                android:textSize="@dimen/text_md"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/daftar_gambar_produk"
+                android:layout_margin="@dimen/pad_sm"
+                android:paddingStart="@dimen/pad_sm"
+                android:paddingEnd="@dimen/pad_sm"/>
 
             <TextView
                 android:id="@+id/daftar_diskon_produk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pad_sm"
-                android:layout_marginTop="@dimen/pad_sm"
                 android:fontFamily="@font/montserrat"
                 android:text="20%"
-                android:textColor="@color/text_harga_detail_produk" />
+                android:textColor="@color/text_harga_detail_produk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/daftar_nama_produk"
+                android:layout_marginStart="@dimen/pad_sm"/>
 
             <TextView
                 android:id="@+id/daftar_harga_produk_old"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pad_sm"
-                android:layout_marginTop="@dimen/pad_sm"
                 android:background="@drawable/shape_strikethrough"
                 android:fontFamily="@font/montserrat"
-                android:text="Rp. 10.000" />
+                android:text="Rp. 10.000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/daftar_diskon_produk"
+                android:layout_marginStart="@dimen/pad_sm"/>
 
             <TextView
                 android:id="@+id/daftar_harga_produk_final"
@@ -68,7 +76,10 @@
                 android:fontFamily="@font/montserrat"
                 android:text="Rp. 8.000"
                 android:textColor="@color/text_main"
-                android:textSize="@dimen/text_md" />
-        </LinearLayout>
+                android:textSize="@dimen/text_md"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/daftar_harga_produk_old" />
+        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
