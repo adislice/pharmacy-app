@@ -1,9 +1,11 @@
 package com.uty.apotekku
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class CheckoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +26,12 @@ class CheckoutActivity : AppCompatActivity() {
         checkoutHitung.add(CheckoutHitungModel("Subtotal diskon pesanan",21000))
 
         val checkoutProductDetailViewAdapter : RecyclerView.Adapter<*> = CheckoutAdapter(checkoutList)
-        val checkoutProductDetailViewManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val checkoutProductDetailViewManager =
+            LinearLayoutManager(
+                this,
+                LinearLayoutManager.VERTICAL,
+                false
+            )
         checkoutProductDetail.apply {
             setHasFixedSize(true)
             adapter = checkoutProductDetailViewAdapter
@@ -32,11 +39,23 @@ class CheckoutActivity : AppCompatActivity() {
         }
 
         val checkoutHitungDetailViewAdapter : RecyclerView.Adapter<*> = CheckoutHitungAdapter(checkoutHitung)
-        val checkoutHitungDetailViewManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val checkoutHitungDetailViewManager =
+            LinearLayoutManager(
+                this,
+                LinearLayoutManager.VERTICAL,
+                false
+            )
         checkoutHitungDetail.apply {
             setHasFixedSize(true)
             adapter = checkoutHitungDetailViewAdapter
             layoutManager = checkoutHitungDetailViewManager
         }
+
+        val type = arrayOf("DANA", "OVO", "ShopeePay", "ATM Bersama", "PayPal")
+
+        val adapter = ArrayAdapter(this,R.layout.list_metode_pembayaran,type)
+
+        val editTextFilledExposedDropdown = findViewById<AutoCompleteTextView>(R.id.checkout_metode_pembayaran)
+        editTextFilledExposedDropdown.setAdapter(adapter)
     }
 }
