@@ -6,24 +6,22 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uty.apotekku.DetailProdukActivity
-import com.uty.apotekku.Model.DaftarObatDataModel
+import com.uty.apotekku.Model.DaftarAlkesDataModel
 import com.uty.apotekku.R
-import xyz.peridy.shimmerlayout.ShimmerLayout
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-open class DaftarObatAdapter(private val list: ArrayList<DaftarObatDataModel>, open var limit: Int = 0): RecyclerView.Adapter<DaftarObatAdapter.Holder>() {
+open class DaftarAlkesAdapter(private val list: ArrayList<DaftarAlkesDataModel>, open var limit: Int = 0): RecyclerView.Adapter<DaftarAlkesAdapter.Holder>() {
     class Holder (view: View): RecyclerView.ViewHolder(view){
-        val obatname: TextView = view.findViewById(R.id.daftar_nama_produk)
-        val obatharga: TextView = view.findViewById(R.id.daftar_harga_produk_old)
-        val obatdiskon: TextView = view.findViewById(R.id.daftar_diskon_produk)
-        val obathargafinal: TextView = view.findViewById(R.id.daftar_harga_produk_final)
+        val alkesname: TextView = view.findViewById(R.id.daftar_nama_produk)
+        val alkesharga: TextView = view.findViewById(R.id.daftar_harga_produk_old)
+        val alkesdiskon: TextView = view.findViewById(R.id.daftar_diskon_produk)
+        val alkeshargafinal: TextView = view.findViewById(R.id.daftar_harga_produk_final)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -38,18 +36,18 @@ open class DaftarObatAdapter(private val list: ArrayList<DaftarObatDataModel>, o
         val hargalama = list[position].harga?.toDouble()
 
         if (list[position].diskon == 0){
-            holder.obatname.text = list[position].nama_obat
-            holder.obatdiskon.text = ""
-            holder.obatharga.text = ""
-            holder.obathargafinal.text = hargalama?.let { rupiah(it) }
+            holder.alkesname.text = list[position].nama_alkes
+            holder.alkesdiskon.text = ""
+            holder.alkesharga.text = ""
+            holder.alkeshargafinal.text = hargalama?.let { rupiah(it) }
         } else {
             val hitungdiskon: Double = (list[position].diskon!!.toDouble() / 100) * list[position].harga!!
             val hargafinal = list[position].harga!! - hitungdiskon
 
-            holder.obatname.text = list[position].nama_obat
-            holder.obatdiskon.text = list[position].diskon.toString() + "%"
-            holder.obatharga.text = hargalama?.let { rupiah(it) }
-            holder.obathargafinal.text = rupiah(hargafinal)
+            holder.alkesname.text = list[position].nama_alkes
+            holder.alkesdiskon.text = list[position].diskon.toString() + "%"
+            holder.alkesharga.text = hargalama?.let { rupiah(it) }
+            holder.alkeshargafinal.text = rupiah(hargafinal)
         }
 
         Glide.with(holder.itemView.context)
@@ -60,11 +58,10 @@ open class DaftarObatAdapter(private val list: ArrayList<DaftarObatDataModel>, o
         holder.itemView.setOnClickListener {
             val ctx = holder.itemView.context
             val intent = Intent(ctx, DetailProdukActivity::class.java)
-            intent.putExtra("id_obat", list[position].id_obat)
-            intent.putExtra("kategori", "obat")
+            intent.putExtra("id_alkes", list[position].id_alkes)
+            intent.putExtra("kategori", "alkes")
             ctx.startActivity(intent)
         }
-
     }
 
     override fun getItemCount(): Int =  if(limit > 0 && list.size >= limit) limit else list.size

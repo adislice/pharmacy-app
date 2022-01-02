@@ -36,15 +36,12 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/montserrat"
                 android:maxLines="2"
-                android:text="KONTOLODOOONNNNNNNNNNNNNNNNNNNN"
+                android:text="Bisolvon Extra Sirup 60 ml"
                 android:textColor="@color/text_main"
                 android:textSize="@dimen/text_md"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/daftar_gambar_produk"
-                android:layout_margin="@dimen/pad_sm"
-                android:paddingStart="@dimen/pad_sm"
-                android:paddingEnd="@dimen/pad_sm"/>
+                android:padding="@dimen/pad_sm"/>
 
             <TextView
                 android:id="@+id/daftar_diskon_produk"

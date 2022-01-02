@@ -7,7 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
+import xyz.peridy.shimmerlayout.ShimmerLayout
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 open class ObatAdapter(private val list: ArrayList<ObatModel>, open var limit: Int = 0): RecyclerView.Adapter<ObatAdapter.Holder>() {
     class Holder (view: View): RecyclerView.ViewHolder(view){
@@ -15,6 +20,7 @@ open class ObatAdapter(private val list: ArrayList<ObatModel>, open var limit: I
         val image: ImageView = view.findViewById(R.id.obat_image)
         val jenis: TextView = view.findViewById(R.id.obat_jenis)
         val harga: TextView = view.findViewById(R.id.obat_harga)
+        val layoutloading: ShimmerLayout = view.findViewById(R.id.shimmer_layout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -24,10 +30,11 @@ open class ObatAdapter(private val list: ArrayList<ObatModel>, open var limit: I
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.layoutloading.visibility = View.GONE
         holder.name.text = list[position].name
         holder.image.setImageResource(list[position].image)
         holder.jenis.text = list[position].jenis
-        holder.harga.text = "Rp. " + list[position].harga
+        holder.harga.text =  rupiah(list[position].harga.toDouble())
         holder.itemView.setOnClickListener {
             val ctx = holder.itemView.context
             val intent = Intent(ctx, DetailProdukActivity::class.java)
@@ -36,4 +43,10 @@ open class ObatAdapter(private val list: ArrayList<ObatModel>, open var limit: I
     }
 
     override fun getItemCount(): Int = if(limit > 0) limit else list.size
+}
+
+private fun rupiah(number: Double): String {
+    val localeID = Locale("in", "ID")
+    val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+    return numberFormat.format(number)
 }

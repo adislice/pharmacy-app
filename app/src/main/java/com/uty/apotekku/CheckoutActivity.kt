@@ -1,11 +1,9 @@
 package com.uty.apotekku
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 
 class CheckoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,11 +49,11 @@ class CheckoutActivity : AppCompatActivity() {
             layoutManager = checkoutHitungDetailViewManager
         }
 
-        val type = arrayOf("DANA", "OVO", "ShopeePay", "ATM Bersama", "PayPal")
-
-        val adapter = ArrayAdapter(this,R.layout.list_metode_pembayaran,type)
-
-        val editTextFilledExposedDropdown = findViewById<AutoCompleteTextView>(R.id.checkout_metode_pembayaran)
-        editTextFilledExposedDropdown.setAdapter(adapter)
+//        val type = arrayOf("DANA", "OVO", "ShopeePay", "ATM Bersama", "PayPal")
+//
+//        val adapter = ArrayAdapter(this,R.layout.list_metode_pembayaran,type)
+//
+//        val editTextFilledExposedDropdown = findViewById<AutoCompleteTextView>(R.id.checkout_metode_pembayaran)
+//        editTextFilledExposedDropdown.setAdapter(adapter)
     }
 }

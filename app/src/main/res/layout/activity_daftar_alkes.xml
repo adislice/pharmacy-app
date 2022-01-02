@@ -100,7 +100,7 @@
                 tools:context=".DaftarObatActivity">
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_daftar_obat"
+                    android:id="@+id/rv_daftar_alkes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
