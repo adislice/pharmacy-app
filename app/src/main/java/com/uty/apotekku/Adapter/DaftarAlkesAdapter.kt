@@ -70,5 +70,6 @@ open class DaftarAlkesAdapter(private val list: ArrayList<DaftarAlkesDataModel>,
 private fun rupiah(number: Double): String {
     val localeID = Locale("in", "ID")
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+    numberFormat.maximumFractionDigits = 0
     return numberFormat.format(number)
 }

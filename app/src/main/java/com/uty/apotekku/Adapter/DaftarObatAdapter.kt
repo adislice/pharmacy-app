@@ -71,5 +71,6 @@ open class DaftarObatAdapter(private val list: ArrayList<DaftarObatDataModel>, o
 private fun rupiah(number: Double): String {
     val localeID = Locale("in", "ID")
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+    numberFormat.maximumFractionDigits = 0
     return numberFormat.format(number)
 }

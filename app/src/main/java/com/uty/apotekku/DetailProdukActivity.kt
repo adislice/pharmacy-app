@@ -166,6 +166,7 @@ class DetailProdukActivity : AppCompatActivity() {
                 tvprodukHargaAsli.text = rupiah(hargaalkes!!.toDouble())
                 tvprodukDiskon.text = "$diskonalkes%"
                 tvprodukDeskripsi.text = deskripsialkes
+                tvprodukJenis.visibility = View.GONE
 
                 Glide.with(this@DetailProdukActivity)
                     .load(gambaralkes)
@@ -184,6 +185,7 @@ class DetailProdukActivity : AppCompatActivity() {
     private fun rupiah(number: Double): String {
         val localeID = Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+        numberFormat.maximumFractionDigits = 0
         return numberFormat.format(number)
     }
 

@@ -42,8 +42,8 @@ open class AlkesAdapter(private val list: ArrayList<AlkesDataModel>, open var li
         holder.itemView.setOnClickListener {
             val ctx = holder.itemView.context
             val intent = Intent(ctx, DetailProdukActivity::class.java)
-            intent.putExtra("id_obat", list[position].id_alkes)
-            intent.putExtra("kategori", "obat")
+            intent.putExtra("id_alkes", list[position].id_alkes)
+            intent.putExtra("kategori", "alkes")
             ctx.startActivity(intent)
         }
     }
@@ -54,5 +54,6 @@ open class AlkesAdapter(private val list: ArrayList<AlkesDataModel>, open var li
 private fun rupiah(number: Double): String {
     val localeID = Locale("in", "ID")
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+    numberFormat.maximumFractionDigits = 0
     return numberFormat.format(number)
 }

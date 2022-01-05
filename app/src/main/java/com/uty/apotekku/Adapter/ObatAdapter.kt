@@ -54,5 +54,6 @@ open class ObatAdapter(private val list: ArrayList<ObatDataModel>, open var limi
 private fun rupiah(number: Double): String {
     val localeID = Locale("in", "ID")
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+    numberFormat.maximumFractionDigits = 0
     return numberFormat.format(number)
 }
