@@ -45,8 +45,6 @@ class ForgotPassActivity : AppCompatActivity() {
                 forgotet.error = "Form harus diisi"
             } else {
                 Toast.makeText(applicationContext,"Permintaan telah dikirim, cek Email atau SMS untuk mengakses link reset kata sandi", Toast.LENGTH_LONG).show()
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
                 finish()
             }
         }

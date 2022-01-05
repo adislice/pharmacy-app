@@ -36,12 +36,14 @@ class DetailProdukActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail_produk)
 
         val kategori = intent.getStringExtra("kategori")
-        var idobat = 0
-        var idalkes = 0
+        val idobat: Int
+        val idalkes: Int
         if (kategori == "obat") {
             idobat = intent.getIntExtra("id_obat", 1)
+            retrieveDetailObat(idobat)
         } else if (kategori == "alkes"){
             idalkes = intent.getIntExtra("id_alkes", 1)
+            retrieveDetailAlkes(idalkes)
         }
 
         val btnback: ImageButton = findViewById(R.id.produk_back)
@@ -85,12 +87,6 @@ class DetailProdukActivity : AppCompatActivity() {
                 // TODO
             }
         })
-
-        if (kategori == "obat") {
-            retrieveDetailObat(idobat)
-        } else if (kategori == "alkes"){
-            retrieveDetailAlkes(idalkes)
-        }
     }
 
     private fun retrieveDetailObat(id_produk: Int){

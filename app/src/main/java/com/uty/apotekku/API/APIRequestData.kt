@@ -17,6 +17,10 @@ interface APIRequestData {
 
     @POST("api.php")
     @FormUrlEncoded
+    fun alkRetriveData(@Field("aksi") aksi: String): Call<AlkesResponseModel>
+
+    @POST("api.php")
+    @FormUrlEncoded
     fun dobatRetriveData(@Field("aksi") aksi: String): Call<DaftarObatResponseModel>
 
     @POST("api.php")

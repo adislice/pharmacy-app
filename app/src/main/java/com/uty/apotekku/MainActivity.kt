@@ -12,15 +12,17 @@ import android.widget.ImageButton
 import android.widget.Toast
 import com.uty.apotekku.API.APIRequestData
 import com.uty.apotekku.API.RetroServer
+import com.uty.apotekku.Model.AlkesDataModel
+import com.uty.apotekku.Model.AlkesResponseModel
 import com.uty.apotekku.Model.ObatDataModel
 import com.uty.apotekku.Model.ObatResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import com.uty.apotekku.Adapter.ObatAdapter as NewObatAdapter
+import com.uty.apotekku.Adapter.ObatAdapter
+import com.uty.apotekku.Adapter.AlkesAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,14 +30,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var obatViewAdapter: RecyclerView.Adapter<*>
     private lateinit var obatView: RecyclerView
     private lateinit var obatViewManager: LinearLayoutManager
+    private var alkesList = ArrayList<AlkesDataModel>()
+    private lateinit var alkesViewAdapter: RecyclerView.Adapter<*>
+    private lateinit var alkesView: RecyclerView
+    private lateinit var alkesViewManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val bannerView: RecyclerView = findViewById(R.id.banner_rview)
-
-        val alatView: RecyclerView = findViewById(R.id.alat_list_rview)
         val btnKeranjang: ImageButton = findViewById(R.id.btn_keranjang)
         val menuBar: BottomNavigationView = findViewById(R.id.bottom_nav)
         val btnlihatdaftarobat: Button = findViewById(R.id.btn_lihat_semua_obat)
@@ -67,21 +71,8 @@ class MainActivity : AppCompatActivity() {
         obatView = findViewById(R.id.obat_list_rview)
         obatViewManager = LinearLayoutManager(this)
 
-        val alatList = ArrayList<ObatModel>()
-        alatList.add(ObatModel("Masker 3-ply Hygenix (isi 50)", "Perlengkapan", 50000, R.drawable.masker))
-        alatList.add(ObatModel("Masker 3-ply Hygenix (isi 50)", "Perlengkapan", 50000, R.drawable.masker))
-        alatList.add(ObatModel("Masker 3-ply Hygenix (isi 50)", "Perlengkapan", 50000, R.drawable.masker))
-        alatList.add(ObatModel("Masker 3-ply Hygenix (isi 50)", "Perlengkapan", 50000, R.drawable.masker))
-        alatList.add(ObatModel("Masker 3-ply Hygenix (isi 50)", "Perlengkapan", 50000, R.drawable.masker))
-        alatList.add(ObatModel("Masker 3-ply Hygenix (isi 50)", "Perlengkapan", 50000, R.drawable.masker))
-
-        val alatViewAdapter: RecyclerView.Adapter<*> = ObatAdapter(alatList, 5)
-        val alatViewManager = LinearLayoutManager(this)
-        alatView.apply {
-            setHasFixedSize(true)
-            adapter = alatViewAdapter
-            layoutManager = alatViewManager
-        }
+        alkesView = findViewById(R.id.alat_list_rview)
+        alkesViewManager = LinearLayoutManager(this)
 
         btnKeranjang.setOnClickListener{bukaKeranjang()}
         btnlihatdaftarobat.setOnClickListener{bukaDaftarObat()}
@@ -109,8 +100,8 @@ class MainActivity : AppCompatActivity() {
             false
         }
         menuBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
         retriveDataObat()
+        retriveDataAlkes()
     }
 
     private fun bukaProfil(){
@@ -142,11 +133,8 @@ class MainActivity : AppCompatActivity() {
                 call: Call<ObatResponseModel>,
                 response: Response<ObatResponseModel>
             ) {
-//                val status = response.body()?.status.toString()
-//                Toast.makeText(this@MainActivity, "Status : "+status,Toast.LENGTH_SHORT)
-//                    .show()
                 obatList = response.body()!!.result
-                obatViewAdapter = NewObatAdapter(obatList, 5)
+                obatViewAdapter = ObatAdapter(obatList, 5)
                 obatView.apply {
                     setHasFixedSize(true)
                     adapter = obatViewAdapter
@@ -158,9 +146,33 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ObatResponseModel>, t: Throwable) {
                 Toast.makeText(this@MainActivity, "gagal menghubungkan ke server", Toast.LENGTH_SHORT)
                     .show()
+            }
+        })
+    }
 
+    private fun retriveDataAlkes(){
+        val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
+        val tampilData: Call<AlkesResponseModel> = ardData.alkRetriveData("get_daftar_alkes")
+        tampilData.enqueue(object: Callback<AlkesResponseModel> {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onResponse(
+                call: Call<AlkesResponseModel>,
+                response: Response<AlkesResponseModel>
+            ) {
+                alkesList = response.body()!!.result
+                alkesViewAdapter = AlkesAdapter(alkesList, 5)
+                alkesView.apply {
+                    setHasFixedSize(true)
+                    adapter = alkesViewAdapter
+                    layoutManager = alkesViewManager
+                }
+                alkesViewAdapter.notifyDataSetChanged()
             }
 
+            override fun onFailure(call: Call<AlkesResponseModel>, t: Throwable) {
+                Toast.makeText(this@MainActivity, "gagal menghubungkan ke server", Toast.LENGTH_SHORT)
+                    .show()
+            }
         })
     }
 }

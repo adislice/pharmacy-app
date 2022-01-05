@@ -159,8 +159,6 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Konfirmasi Password tidak cocok", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(applicationContext,"Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
                 finish()
             }
         }
