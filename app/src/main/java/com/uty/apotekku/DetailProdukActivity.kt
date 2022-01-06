@@ -132,7 +132,6 @@ class DetailProdukActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ObatResponseModel>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
     }
 
