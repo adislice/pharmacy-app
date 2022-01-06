@@ -30,6 +30,8 @@ class DetailProdukActivity : AppCompatActivity() {
     private lateinit var tvprodukJenis: TextView
     private lateinit var tvprodukDiskon: TextView
     private lateinit var tvprodukDeskripsi: TextView
+    private lateinit var btntambahkeranjang: Button
+    private var qty: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +54,7 @@ class DetailProdukActivity : AppCompatActivity() {
         val btntambah: ImageButton = findViewById(R.id.produk_qty_tambah)
         val btnkurang: ImageButton = findViewById(R.id.produk_qty_kurang)
 
+        btntambahkeranjang = findViewById(R.id.produk_tambah_keranjang)
         ivprodukGambar = findViewById(R.id.produk_gambar)
         tvprodukNama = findViewById(R.id.produk_nama)
         tvprodukHargaAsli = findViewById(R.id.produk_harga_asli)
@@ -60,34 +63,37 @@ class DetailProdukActivity : AppCompatActivity() {
         tvprodukJenis = findViewById(R.id.produk_jenis)
         tvprodukDeskripsi = findViewById(R.id.produk_deskripsi)
 
-        etqty = findViewById(R.id.produk_qty)
-        var qty: Int = etqty.text.toString().toInt()
-
         btnback.setOnClickListener {finish()}
         btnchart.setOnClickListener {bukaKeranjang(id_user)}
+        btntambahkeranjang.setOnClickListener{
+            Toast.makeText(applicationContext, "kuantitas : " + qty, Toast.LENGTH_SHORT).show()
+        }
+
+        etqty = findViewById(R.id.produk_qty)
+        qty = etqty.text.toString().toInt()
 
         btntambah.setOnClickListener {
             qty ++
             etqty.setText(qty.toString())
         }
         btnkurang.setOnClickListener {
-            if (qty > 0){
+            if (qty > 1){
                 qty --
                 etqty.setText(qty.toString())
             }
         }
 
-        etqty.addTextChangedListener(object: TextWatcher {
-            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
-                qty = etqty.text.toString().toInt()
-            }
-            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int) {
-                // TODO
-            }
-            override fun afterTextChanged(s: Editable) {
-                // TODO
-            }
-        })
+//        etqty.addTextChangedListener(object: TextWatcher {
+//            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
+////                qty = Integer.parseInt(s.toString())
+//            }
+//            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int) {
+//                // TODO
+//            }
+//            override fun afterTextChanged(s: Editable) {
+//                // TODO
+//            }
+//        })
     }
 
     private fun retrieveDetailObat(id_produk: Int){

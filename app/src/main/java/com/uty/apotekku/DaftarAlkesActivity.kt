@@ -25,12 +25,13 @@ class DaftarAlkesActivity : AppCompatActivity() {
     private lateinit var alkesViewAdapter: RecyclerView.Adapter<*>
     private lateinit var alkesView: RecyclerView
     private lateinit var alkesViewManager: GridLayoutManager
-    var id_user = intent.getIntExtra("id_user", 0)
+    private var id_user:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daftar_alkes)
 
+        id_user = intent.getIntExtra("id_user", 0)
         val daftarProdukList = ArrayList<DaftarProdukModel>()
         val btnback: ImageButton = findViewById(R.id.produk_back)
         val btnkeranjang: ImageButton = findViewById(R.id.produk_keranjang)
@@ -54,6 +55,7 @@ class DaftarAlkesActivity : AppCompatActivity() {
     private fun retriveDataAlkes(){
         val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
         val tampilData: Call<DaftarAlkesResponseModel> = ardData.dalkesRetriveData("get_daftar_alkes")
+        id_user = intent.getIntExtra("id_user", 0)
         tampilData.enqueue(object: Callback<DaftarAlkesResponseModel> {
             override fun onResponse(
                 call: Call<DaftarAlkesResponseModel>,

@@ -42,7 +42,6 @@ open class ObatAdapter(private val list: ArrayList<ObatDataModel>, open var limi
         holder.itemView.setOnClickListener {
             val ctx = holder.itemView.context
             val intent = Intent(ctx, DetailProdukActivity::class.java)
-            id_user = intent.getIntExtra("id_user", 0)
             intent.putExtra("id_user", id_user)
             intent.putExtra("id_obat", list[position].id_obat)
             intent.putExtra("kategori", "obat")

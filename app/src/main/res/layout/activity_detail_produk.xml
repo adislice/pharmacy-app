@@ -262,6 +262,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/produk_tambah_keranjang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/detail_produk_tambah_ke_keranjang"

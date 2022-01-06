@@ -25,12 +25,13 @@ class DaftarObatActivity : AppCompatActivity() {
     private lateinit var obatViewAdapter: RecyclerView.Adapter<*>
     private lateinit var obatView: RecyclerView
     private lateinit var obatViewManager: GridLayoutManager
-    var id_user = intent.getIntExtra("id_user", 0)
+    private var id_user:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daftar_obat)
 
+        id_user = intent.getIntExtra("id_user", 0)
         val daftarProdukList = ArrayList<DaftarProdukModel>()
         val btnback: ImageButton = findViewById(R.id.produk_back)
         val btnkeranjang: ImageButton = findViewById(R.id.produk_keranjang)
@@ -55,6 +56,7 @@ class DaftarObatActivity : AppCompatActivity() {
     private fun retriveDataObat(){
         val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
         val tampilData: Call<DaftarObatResponseModel> = ardData.dobatRetriveData("get_daftar_obat")
+        id_user = intent.getIntExtra("id_user", 0)
         tampilData.enqueue(object: Callback<DaftarObatResponseModel> {
             override fun onResponse(
                 call: Call<DaftarObatResponseModel>,

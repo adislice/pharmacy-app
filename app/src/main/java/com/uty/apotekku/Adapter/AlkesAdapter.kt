@@ -42,7 +42,6 @@ open class AlkesAdapter(private val list: ArrayList<AlkesDataModel>, open var li
         holder.itemView.setOnClickListener {
             val ctx = holder.itemView.context
             val intent = Intent(ctx, DetailProdukActivity::class.java)
-            id_user = intent.getIntExtra("id_user", 0)
             intent.putExtra("id_user", id_user)
             intent.putExtra("id_alkes", list[position].id_alkes)
             intent.putExtra("kategori", "alkes")

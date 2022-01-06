@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var alkesViewAdapter: RecyclerView.Adapter<*>
     private lateinit var alkesView: RecyclerView
     private lateinit var alkesViewManager: LinearLayoutManager
-    var id_user = intent.getIntExtra("id_user", 0)
+    private var id_user:Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         val btnlihatdaftarobat: Button = findViewById(R.id.btn_lihat_semua_obat)
         val btnlihatdaftaralkes: Button = findViewById(R.id.btn_lihat_semua_alat)
 
+        id_user = intent.getIntExtra("id_user", 0)
         val nama_user = intent.getStringExtra("nama_user")
         val username = intent.getStringExtra("username")
 
@@ -138,6 +140,7 @@ class MainActivity : AppCompatActivity() {
     private fun retriveDataObat(){
         val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
         val tampilData: Call<ObatResponseModel> = ardData.ardRetriveData("get_daftar_obat")
+        id_user = intent.getIntExtra("id_user", 0)
         tampilData.enqueue(object: Callback<ObatResponseModel> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
@@ -164,6 +167,7 @@ class MainActivity : AppCompatActivity() {
     private fun retriveDataAlkes(){
         val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
         val tampilData: Call<AlkesResponseModel> = ardData.alkRetriveData("get_daftar_alkes")
+        id_user = intent.getIntExtra("id_user", 0)
         tampilData.enqueue(object: Callback<AlkesResponseModel> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
