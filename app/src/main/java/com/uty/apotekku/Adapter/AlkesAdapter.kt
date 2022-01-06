@@ -16,7 +16,7 @@ import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-open class AlkesAdapter(private val list: ArrayList<AlkesDataModel>, open var limit: Int = 0): RecyclerView.Adapter<AlkesAdapter.Holder>() {
+open class AlkesAdapter(private val list: ArrayList<AlkesDataModel>, open var limit: Int = 0, open var id_user: Int): RecyclerView.Adapter<AlkesAdapter.Holder>() {
     class Holder (view: View): RecyclerView.ViewHolder(view){
         val alkes_name: TextView = view.findViewById(R.id.obat_name)
         val alkes_jenis: TextView = view.findViewById(R.id.obat_jenis)
@@ -42,6 +42,8 @@ open class AlkesAdapter(private val list: ArrayList<AlkesDataModel>, open var li
         holder.itemView.setOnClickListener {
             val ctx = holder.itemView.context
             val intent = Intent(ctx, DetailProdukActivity::class.java)
+            id_user = intent.getIntExtra("id_user", 0)
+            intent.putExtra("id_user", id_user)
             intent.putExtra("id_alkes", list[position].id_alkes)
             intent.putExtra("kategori", "alkes")
             ctx.startActivity(intent)

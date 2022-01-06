@@ -32,23 +32,6 @@ class KeranjangActivity : AppCompatActivity() {
 
         val id_user = intent.getIntExtra("id_user", 0)
 
-//        val keranjangList = ArrayList<KeranjangModel>()
-//        keranjangList.add(KeranjangModel("Bisolvon Extra",10000,1))
-//        keranjangList.add(KeranjangModel("Bisolvon Extra",10000,1))
-//        keranjangList.add(KeranjangModel("Bisolvon Extra",10000,1))
-//        keranjangList.add(KeranjangModel("Bisolvon Extra",10000,1))
-//        keranjangList.add(KeranjangModel("Bisolvon Extra",10000,1))
-
-//        val keranjangViewAdapter: RecyclerView.Adapter<*> = KeranjangAdapter(keranjangList)
-        val keranjangViewManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
-//        keranjangView.apply {
-//            setHasFixedSize(true)
-//            adapter = keranjangViewAdapter
-//            layoutManager = keranjangViewManager
-
-//        }
-
         btnbayar.setOnClickListener{prosesCheckout()}
         btnback.setOnClickListener {finish()}
         lihat_keranjang(id_user)

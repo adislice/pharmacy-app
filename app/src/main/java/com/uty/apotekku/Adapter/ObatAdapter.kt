@@ -16,7 +16,7 @@ import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-open class ObatAdapter(private val list: ArrayList<ObatDataModel>, open var limit: Int = 0): RecyclerView.Adapter<ObatAdapter.Holder>() {
+open class ObatAdapter(private val list: ArrayList<ObatDataModel>, open var limit: Int = 0, open var id_user: Int): RecyclerView.Adapter<ObatAdapter.Holder>() {
     class Holder (view: View): RecyclerView.ViewHolder(view){
         val obat_name: TextView = view.findViewById(R.id.obat_name)
         val obat_jenis: TextView = view.findViewById(R.id.obat_jenis)
@@ -42,6 +42,8 @@ open class ObatAdapter(private val list: ArrayList<ObatDataModel>, open var limi
         holder.itemView.setOnClickListener {
             val ctx = holder.itemView.context
             val intent = Intent(ctx, DetailProdukActivity::class.java)
+            id_user = intent.getIntExtra("id_user", 0)
+            intent.putExtra("id_user", id_user)
             intent.putExtra("id_obat", list[position].id_obat)
             intent.putExtra("kategori", "obat")
             ctx.startActivity(intent)

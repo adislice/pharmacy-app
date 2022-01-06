@@ -29,10 +29,11 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        val id_user = intent.getIntExtra("id_user", 0)
         val btnback: ImageButton = findViewById(R.id.profile_back)
         val btnchart: ImageButton = findViewById(R.id.profile_chart)
 
-        btnchart.setOnClickListener{bukaKeranjang()}
+        btnchart.setOnClickListener{bukaKeranjang(id_user)}
         btnback.setOnClickListener{finish()}
 
         tvprofileNama = findViewById(R.id.profile_nama_user)
@@ -42,8 +43,9 @@ class ProfileActivity : AppCompatActivity() {
         tvprofileEmail = findViewById(R.id.profile_email_user)
     }
 
-    private fun bukaKeranjang(){
+    private fun bukaKeranjang(id_user: Int){
         val intent = Intent(this, KeranjangActivity::class.java)
+        intent.putExtra("id_user", id_user)
         startActivity(intent)
     }
 

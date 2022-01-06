@@ -34,18 +34,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var alkesViewAdapter: RecyclerView.Adapter<*>
     private lateinit var alkesView: RecyclerView
     private lateinit var alkesViewManager: LinearLayoutManager
+    var id_user = intent.getIntExtra("id_user", 0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val bannerView: RecyclerView = findViewById(R.id.banner_rview)
         val btnKeranjang: ImageButton = findViewById(R.id.btn_keranjang)
         val menuBar: BottomNavigationView = findViewById(R.id.bottom_nav)
         val btnlihatdaftarobat: Button = findViewById(R.id.btn_lihat_semua_obat)
         val btnlihatdaftaralkes: Button = findViewById(R.id.btn_lihat_semua_alat)
 
-        val id_user = intent.getIntExtra("id_user", 0)
         val nama_user = intent.getStringExtra("nama_user")
         val username = intent.getStringExtra("username")
 
@@ -83,8 +82,8 @@ class MainActivity : AppCompatActivity() {
         alkesViewManager = LinearLayoutManager(this)
 
         btnKeranjang.setOnClickListener{bukaKeranjang(id_user)}
-        btnlihatdaftarobat.setOnClickListener{bukaDaftarObat()}
-        btnlihatdaftaralkes.setOnClickListener{bukaDaftarAlkes()}
+        btnlihatdaftarobat.setOnClickListener{bukaDaftarObat(id_user)}
+        btnlihatdaftaralkes.setOnClickListener{bukaDaftarAlkes(id_user)}
 
         val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -93,15 +92,15 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_obat -> {
-                    bukaDaftarObat()
+                    bukaDaftarObat(id_user)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_alat -> {
-                    bukaDaftarAlkes()
+                    bukaDaftarAlkes(id_user)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_profile -> {
-                    bukaProfil()
+                    bukaProfil(id_user)
                     return@OnNavigationItemSelectedListener true
                 }
             }
@@ -112,8 +111,9 @@ class MainActivity : AppCompatActivity() {
         retriveDataAlkes()
     }
 
-    private fun bukaProfil(){
+    private fun bukaProfil(id_user: Int){
         val intent = Intent(this, ProfileActivity::class.java)
+        intent.putExtra("id_user", id_user)
         startActivity(intent)
     }
 
@@ -123,13 +123,15 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun bukaDaftarObat(){
+    private fun bukaDaftarObat(id_user: Int){
         val intent = Intent(this, DaftarObatActivity::class.java)
+        intent.putExtra("id_user", id_user)
         startActivity(intent)
     }
 
-    private fun bukaDaftarAlkes(){
+    private fun bukaDaftarAlkes(id_user: Int){
         val intent = Intent(this, DaftarAlkesActivity::class.java)
+        intent.putExtra("id_user", id_user)
         startActivity(intent)
     }
 
@@ -143,7 +145,7 @@ class MainActivity : AppCompatActivity() {
                 response: Response<ObatResponseModel>
             ) {
                 obatList = response.body()!!.result
-                obatViewAdapter = ObatAdapter(obatList, 5)
+                obatViewAdapter = ObatAdapter(obatList, 5, id_user)
                 obatView.apply {
                     setHasFixedSize(true)
                     adapter = obatViewAdapter
@@ -169,7 +171,7 @@ class MainActivity : AppCompatActivity() {
                 response: Response<AlkesResponseModel>
             ) {
                 alkesList = response.body()!!.result
-                alkesViewAdapter = AlkesAdapter(alkesList, 5)
+                alkesViewAdapter = AlkesAdapter(alkesList, 5, id_user)
                 alkesView.apply {
                     setHasFixedSize(true)
                     adapter = alkesViewAdapter

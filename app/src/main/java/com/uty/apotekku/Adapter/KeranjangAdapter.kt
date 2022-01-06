@@ -22,7 +22,6 @@ open class KeranjangAdapter(private val list: ArrayList<KeranjangDataModel>, ope
         val krjnama: TextView = view.findViewById(R.id.tv_krj_nama_produk)
         val krjhargafinal: TextView = view.findViewById(R.id.tv_krj_harga_produk)
         val krjjumlahproduk: EditText = view.findViewById(R.id.et_krj_jumlah_produk)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -37,10 +36,10 @@ open class KeranjangAdapter(private val list: ArrayList<KeranjangDataModel>, ope
         val harga = list[position].harga_setelah_diskon.toDouble()
         val qty = list[position].qty
 
+
         holder.krjnama.text = list[position].nama_produk
         holder.krjhargafinal.text = rupiah(harga)
         holder.krjjumlahproduk.setText(qty.toString())
-
 
         Glide.with(holder.itemView.context)
             .load(img)
@@ -50,8 +49,12 @@ open class KeranjangAdapter(private val list: ArrayList<KeranjangDataModel>, ope
         holder.itemView.setOnClickListener {
             val ctx = holder.itemView.context
             val intent = Intent(ctx, DetailProdukActivity::class.java)
-            intent.putExtra("id_obat", list[position].id_produk)
-            intent.putExtra("kategori", "obat")
+            if(list[position].kategori_produk == "obat"){
+                intent.putExtra("id_obat", list[position].id_produk)
+            } else if (list[position].kategori_produk == "alkes"){
+                intent.putExtra("id_alkes", list[position].id_produk)
+            }
+            intent.putExtra("kategori", list[position].kategori_produk)
             ctx.startActivity(intent)
         }
 

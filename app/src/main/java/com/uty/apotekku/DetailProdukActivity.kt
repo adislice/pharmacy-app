@@ -35,6 +35,7 @@ class DetailProdukActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_produk)
 
+        val id_user = intent.getIntExtra("id_user", 0)
         val kategori = intent.getStringExtra("kategori")
         val idobat: Int
         val idalkes: Int
@@ -63,7 +64,7 @@ class DetailProdukActivity : AppCompatActivity() {
         var qty: Int = etqty.text.toString().toInt()
 
         btnback.setOnClickListener {finish()}
-        btnchart.setOnClickListener {bukaKeranjang()}
+        btnchart.setOnClickListener {bukaKeranjang(id_user)}
 
         btntambah.setOnClickListener {
             qty ++
@@ -188,8 +189,9 @@ class DetailProdukActivity : AppCompatActivity() {
         return numberFormat.format(number)
     }
 
-    private fun bukaKeranjang(){
+    private fun bukaKeranjang(id_user: Int){
         val intent = Intent(this, KeranjangActivity::class.java)
+        intent.putExtra("id_user", id_user)
         startActivity(intent)
     }
 }

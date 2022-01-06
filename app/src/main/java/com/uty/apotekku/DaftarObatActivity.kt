@@ -10,7 +10,6 @@ import android.widget.Toast
 import com.uty.apotekku.API.APIRequestData
 import com.uty.apotekku.API.RetroServer
 import com.uty.apotekku.Adapter.DaftarObatAdapter
-import com.uty.apotekku.Adapter.ObatAdapter
 import com.uty.apotekku.Model.DaftarObatDataModel
 import com.uty.apotekku.Model.DaftarObatResponseModel
 import retrofit2.Call
@@ -26,6 +25,7 @@ class DaftarObatActivity : AppCompatActivity() {
     private lateinit var obatViewAdapter: RecyclerView.Adapter<*>
     private lateinit var obatView: RecyclerView
     private lateinit var obatViewManager: GridLayoutManager
+    var id_user = intent.getIntExtra("id_user", 0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class DaftarObatActivity : AppCompatActivity() {
         val btnkeranjang: ImageButton = findViewById(R.id.produk_keranjang)
 
         btnback.setOnClickListener {finish()}
-        btnkeranjang.setOnClickListener {bukaKeranjang()}
+        btnkeranjang.setOnClickListener {bukaKeranjang(id_user)}
 
         obatView = findViewById(R.id.rv_daftar_obat)
         obatViewAdapter  = DaftarProdukAdapter(daftarProdukList)
@@ -46,8 +46,9 @@ class DaftarObatActivity : AppCompatActivity() {
 
     }
 
-    private fun bukaKeranjang(){
-        val intent = Intent(this@DaftarObatActivity, KeranjangActivity::class.java)
+    private fun bukaKeranjang(id_user: Int){
+        val intent = Intent(this, KeranjangActivity::class.java)
+        intent.putExtra("id_user", id_user)
         startActivity(intent)
     }
 
@@ -60,7 +61,7 @@ class DaftarObatActivity : AppCompatActivity() {
                 response: Response<DaftarObatResponseModel>
             ) {
                 obatList = response.body()!!.result
-                obatViewAdapter = DaftarObatAdapter(obatList, 100)
+                obatViewAdapter = DaftarObatAdapter(obatList, 100, id_user)
                 obatView.apply {
                     setHasFixedSize(true)
                     adapter = obatViewAdapter

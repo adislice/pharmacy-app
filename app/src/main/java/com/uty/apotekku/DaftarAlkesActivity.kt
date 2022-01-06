@@ -25,6 +25,7 @@ class DaftarAlkesActivity : AppCompatActivity() {
     private lateinit var alkesViewAdapter: RecyclerView.Adapter<*>
     private lateinit var alkesView: RecyclerView
     private lateinit var alkesViewManager: GridLayoutManager
+    var id_user = intent.getIntExtra("id_user", 0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +36,7 @@ class DaftarAlkesActivity : AppCompatActivity() {
         val btnkeranjang: ImageButton = findViewById(R.id.produk_keranjang)
 
         btnback.setOnClickListener {finish()}
-        btnkeranjang.setOnClickListener {bukaKeranjang()}
+        btnkeranjang.setOnClickListener {bukaKeranjang(id_user)}
 
         alkesView = findViewById(R.id.rv_daftar_alkes)
         alkesViewAdapter  = DaftarProdukAdapter(daftarProdukList)
@@ -44,8 +45,9 @@ class DaftarAlkesActivity : AppCompatActivity() {
         retriveDataAlkes()
     }
 
-    private fun bukaKeranjang(){
-        val intent = Intent(this@DaftarAlkesActivity, KeranjangActivity::class.java)
+    private fun bukaKeranjang(id_user: Int){
+        val intent = Intent(this, KeranjangActivity::class.java)
+        intent.putExtra("id_user", id_user)
         startActivity(intent)
     }
 
@@ -58,7 +60,7 @@ class DaftarAlkesActivity : AppCompatActivity() {
                 response: Response<DaftarAlkesResponseModel>
             ) {
                 alkesList = response.body()!!.result
-                alkesViewAdapter = DaftarAlkesAdapter(alkesList, 100)
+                alkesViewAdapter = DaftarAlkesAdapter(alkesList, 100, id_user)
                 alkesView.apply {
                     setHasFixedSize(true)
                     adapter = alkesViewAdapter
