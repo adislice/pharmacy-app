@@ -9,6 +9,12 @@ import android.text.TextWatcher
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.uty.apotekku.API.APIRequestData
+import com.uty.apotekku.API.RetroServer
+import com.uty.apotekku.Model.LoginResponseModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
@@ -58,22 +64,20 @@ class LoginActivity : AppCompatActivity() {
         })
 
         btnLogin.setOnClickListener {
-//            val email = etEmail.text.toString()
-//            val password = etPass.text.toString()
-//
-//            if(email == "user" && password == "user") {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-//            } else if (email.isEmpty()) {
-//                etEmail.error = "Required"
-//                Toast.makeText(applicationContext,"Email tidak boleh kosong", Toast.LENGTH_SHORT).show()
-//            } else if (password.isEmpty()) {
-//                etPass.error = "Required"
-//                Toast.makeText(applicationContext,"Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
-//            } else {
-//                Toast.makeText(applicationContext,"Email atau password salah", Toast.LENGTH_SHORT).show()
-//            }
+            val email = etEmail.text.toString()
+            val password = etPass.text.toString()
+
+            if(email.isNotEmpty()  && password.isNotEmpty()) {
+                login_user(email, password)
+            } else if (email.isEmpty()) {
+                etEmail.error = "Required"
+                Toast.makeText(applicationContext,"Email tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else if (password.isEmpty()) {
+                etPass.error = "Required"
+                Toast.makeText(applicationContext,"Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(applicationContext,"Email atau password salah", Toast.LENGTH_SHORT).show()
+            }
         }
 
         txtRegist.setOnClickListener{
@@ -85,5 +89,42 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, ForgotPassActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    fun login_user(email: String, password: String){
+        val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
+        val tampilData: Call<LoginResponseModel> = ardData.cekLoginUser("cek_login_user", email, password)
+        tampilData.enqueue(object: Callback<LoginResponseModel> {
+            override fun onResponse(
+                call: Call<LoginResponseModel>,
+                response: Response<LoginResponseModel>
+            ) {
+                val loginStatus = response.body()!!.status
+                if (loginStatus){
+                    val loginResult = response.body()!!.result
+                    val id_user = loginResult[0].id_user
+                    val nama_user = loginResult[0].nama_user
+                    val username = loginResult[0].username
+                    Toast.makeText(this@LoginActivity, "Login Berhasil", Toast.LENGTH_SHORT )
+                        .show()
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra("id_user",id_user)
+                    intent.putExtra("nama_user", nama_user)
+                    intent.putExtra("username", username)
+                    startActivity(intent)
+                    finish()
+
+                } else {
+                    Toast.makeText(this@LoginActivity, "Login Gagal. Silahkan Cek Ulang Email dan Password!", Toast.LENGTH_LONG)
+                        .show()
+                }
+
+            }
+
+            override fun onFailure(call: Call<LoginResponseModel>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 }

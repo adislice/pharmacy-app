@@ -45,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         val btnlihatdaftarobat: Button = findViewById(R.id.btn_lihat_semua_obat)
         val btnlihatdaftaralkes: Button = findViewById(R.id.btn_lihat_semua_alat)
 
+        val id_user = intent.getIntExtra("id_user", 0)
+        val nama_user = intent.getStringExtra("nama_user")
+        val username = intent.getStringExtra("username")
+
+        Toast.makeText(this, "Selamat Datang, $nama_user! Selamat Berbelanja.", Toast.LENGTH_LONG)
+            .show()
+
+
         val bannerList = ArrayList<BannerModel>()
         bannerList.add(BannerModel(
             "6 Rekomendasi Vitamin Otak Terbaik untuk Lansia",
