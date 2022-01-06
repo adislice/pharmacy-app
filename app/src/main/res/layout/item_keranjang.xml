@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content" />
 
             <ImageView
-                android:id="@+id/img_produk"
+                android:id="@+id/img_krj_gambar_produk"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="5dp"
@@ -33,7 +33,7 @@
                 android:contentDescription="@string/keranjang_gambar_produk" />
 
             <TextView
-                android:id="@+id/tv_nama"
+                android:id="@+id/tv_krj_nama_produk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -70,7 +70,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_harga"
+                    android:id="@+id/tv_krj_harga_produk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -99,21 +99,21 @@
                         android:contentDescription="@string/keranjang_kurangi_jumlah_produk" />
 
                     <EditText
-                        android:id="@+id/et_jumlah"
+                        android:id="@+id/et_krj_jumlah_produk"
                         android:layout_width="@dimen/et_height"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="5dp"
                         android:background="@color/white"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:text="@string/keranjang_default_qty"
                         android:textColor="@color/text_main"
-                        android:textStyle="bold"
                         android:textSize="@dimen/text_md"
-                        android:fontFamily="@font/montserrat" />
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/btn_tambah"

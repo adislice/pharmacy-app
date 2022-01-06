@@ -10,9 +10,9 @@ import android.widget.TextView
 class KeranjangAdapter(private val list: ArrayList<KeranjangModel>): RecyclerView.Adapter<KeranjangAdapter.Holder>() {
 
     class Holder (view: View): RecyclerView.ViewHolder(view){
-        val title: TextView = view.findViewById(R.id.tv_nama)
-        val jml: EditText = view.findViewById(R.id.et_jumlah)
-        val price: TextView = view.findViewById(R.id.tv_harga)
+        val title: TextView = view.findViewById(R.id.tv_krj_nama_produk)
+        val jml: EditText = view.findViewById(R.id.et_krj_jumlah_produk)
+        val price: TextView = view.findViewById(R.id.tv_krj_harga_produk)
         var kuantitas = jml.toString()
     }
 

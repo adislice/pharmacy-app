@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         alkesView = findViewById(R.id.alat_list_rview)
         alkesViewManager = LinearLayoutManager(this)
 
-        btnKeranjang.setOnClickListener{bukaKeranjang()}
+        btnKeranjang.setOnClickListener{bukaKeranjang(id_user)}
         btnlihatdaftarobat.setOnClickListener{bukaDaftarObat()}
         btnlihatdaftaralkes.setOnClickListener{bukaDaftarAlkes()}
 
@@ -117,8 +117,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun bukaKeranjang(){
+    private fun bukaKeranjang(id_user: Int){
         val intent = Intent(this, KeranjangActivity::class.java)
+        intent.putExtra("id_user", id_user)
         startActivity(intent)
     }
 
