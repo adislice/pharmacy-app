@@ -47,4 +47,17 @@ interface APIRequestData {
     @POST("api.php")
     @FormUrlEncoded
     fun lihat_detail_user(@Field("aksi") aksi: String, @Field("id_user") id_user: Int): Call<ProfileResponseModel>
+
+    @POST("api.php")
+    @FormUrlEncoded
+    fun tambahObatKeKrj(@Field("aksi") aksi: String, @Field("id_user") id_user: Int, @Field("id_obat") id_obat: Int, @Field("qty") qty: Int): Call<TambahObatKeKeranjangResponseModel>
+
+    @POST("api.php")
+    @FormUrlEncoded
+    fun cekQtyObat(@Field("aksi") aksi: String, @Field("id_user") id_user: Int, @Field("id_obat") id_obat: Int): Call<CekKuantitasResponseModel>
+
+    @POST("api.php")
+    @FormUrlEncoded
+    fun cekQtyAlkes(@Field("aksi") aksi: String, @Field("id_user") id_user: Int, @Field("id_alkes") id_obat: Int): Call<CekKuantitasResponseModel>
+
 }

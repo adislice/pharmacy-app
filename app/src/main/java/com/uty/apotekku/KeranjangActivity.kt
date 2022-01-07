@@ -55,7 +55,7 @@ class KeranjangActivity : AppCompatActivity() {
                 if (krjStatus == true) {
 
                     var krjResult = response.body()!!.result
-                    keranjangViewAdapter = KeranjangAdapter(krjResult)
+                    keranjangViewAdapter = KeranjangAdapter(krjResult, id_user = id_user)
                     keranjangRV.apply{
                         setHasFixedSize(true)
                         adapter = keranjangViewAdapter

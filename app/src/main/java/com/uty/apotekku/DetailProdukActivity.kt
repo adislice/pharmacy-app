@@ -13,7 +13,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uty.apotekku.API.APIRequestData
 import com.uty.apotekku.API.RetroServer
 import com.uty.apotekku.Model.AlkesResponseModel
+import com.uty.apotekku.Model.CekKuantitasResponseModel
 import com.uty.apotekku.Model.ObatResponseModel
+import com.uty.apotekku.Model.TambahObatKeKeranjangResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,8 +41,8 @@ class DetailProdukActivity : AppCompatActivity() {
 
         val id_user = intent.getIntExtra("id_user", 0)
         val kategori = intent.getStringExtra("kategori")
-        val idobat: Int
-        val idalkes: Int
+        var idobat: Int = 0
+        var idalkes: Int = 0
         if (kategori == "obat") {
             idobat = intent.getIntExtra("id_obat", 1)
             retrieveDetailObat(idobat)
@@ -67,6 +69,9 @@ class DetailProdukActivity : AppCompatActivity() {
         btnchart.setOnClickListener {bukaKeranjang(id_user)}
         btntambahkeranjang.setOnClickListener{
             Toast.makeText(applicationContext, "kuantitas : " + etqty.text.toString().toInt(), Toast.LENGTH_SHORT).show()
+            if (kategori == "obat") {
+                tambahObatKeKeranjang(id_user, idobat, etqty.text.toString().toInt())
+            }
         }
 
         etqty = findViewById(R.id.produk_qty)
@@ -82,6 +87,11 @@ class DetailProdukActivity : AppCompatActivity() {
                 etqty.setText(qty.toString())
             }
         }
+
+        if (kategori == "obat") {
+            cekKuantitasObat(id_user, idobat)
+        }
+
     }
 
     private fun retrieveDetailObat(id_produk: Int){
@@ -176,6 +186,28 @@ class DetailProdukActivity : AppCompatActivity() {
         })
     }
 
+    private fun cekKuantitasObat(id_user: Int, id_obat: Int){
+        val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
+        val qtyResult : Call<CekKuantitasResponseModel> = ardData.cekQtyObat("cek_qty_obat", id_user, id_obat)
+        qtyResult.enqueue(object: Callback<CekKuantitasResponseModel> {
+            override fun onResponse(
+                call: Call<CekKuantitasResponseModel>,
+                response: Response<CekKuantitasResponseModel>
+            ) {
+                val status = response.body()!!.status
+                val qty = response.body()!!.qty
+                if (qty > 0) {
+                    etqty.setText(qty.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<CekKuantitasResponseModel>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
     private fun rupiah(number: Double): String {
         val localeID = Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
@@ -187,5 +219,34 @@ class DetailProdukActivity : AppCompatActivity() {
         val intent = Intent(this, KeranjangActivity::class.java)
         intent.putExtra("id_user", id_user)
         startActivity(intent)
+    }
+
+    private fun tambahObatKeKeranjang(id_user: Int, id_obat: Int, qty: Int){
+        val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
+        val tambahObatResult: Call<TambahObatKeKeranjangResponseModel> = ardData.tambahObatKeKrj("tambah_obat_ke_keranjang", id_user, id_obat, qty)
+        tambahObatResult.enqueue(object: Callback<TambahObatKeKeranjangResponseModel> {
+            override fun onResponse(
+                call: Call<TambahObatKeKeranjangResponseModel>,
+                response: Response<TambahObatKeKeranjangResponseModel>
+            ) {
+                val status = response.body()!!.status
+                val msg = response.body()!!.msg
+                if (status) {
+                    if (msg == "insert-sukses") {
+                        Toast.makeText(this@DetailProdukActivity, "Berhasil Menambahkan ke Keranjang", Toast.LENGTH_SHORT)
+                            .show()
+                    } else if (msg == "update-sukses") {
+                        Toast.makeText(this@DetailProdukActivity, "Berhasil Mengubah Kuantitas", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<TambahObatKeKeranjangResponseModel>, t: Throwable) {
+                Toast.makeText(this@DetailProdukActivity, "Gagal Menambahkan ke Keranjang", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        })
     }
 }
