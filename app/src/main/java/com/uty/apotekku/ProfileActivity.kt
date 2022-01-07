@@ -1,18 +1,13 @@
 package com.uty.apotekku
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uty.apotekku.API.APIRequestData
 import com.uty.apotekku.API.RetroServer
-import com.uty.apotekku.Model.ObatResponseModel
+import com.uty.apotekku.Model.ProfileResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,6 +36,8 @@ class ProfileActivity : AppCompatActivity() {
         tvprofileAlamat = findViewById(R.id.profile_alamat_user)
         tvprofileNoTelp = findViewById(R.id.profile_no_telp_user)
         tvprofileEmail = findViewById(R.id.profile_email_user)
+
+        retrieveDetailUser(id_user)
     }
 
     private fun bukaKeranjang(id_user: Int){
@@ -49,5 +46,31 @@ class ProfileActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun retrieveDetailUser(id_user: Int){
+        val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
+        val tampilUser: Call<ProfileResponseModel> = ardData.lihat_detail_user("get_user_detail", id_user)
+        tampilUser.enqueue(object: Callback<ProfileResponseModel>{
+            override fun onResponse(
+                call: Call<ProfileResponseModel>,
+                response: Response<ProfileResponseModel>
+            ) {
+                val user = response.body()!!.result
+                val namauser = user[0].namaUser
+                val unameuser = user[0].unameUser
+                val emailuser = user[0].emailUser
+                val alamatuser = user[0].alamatUser
+                val notelpuser = user[0].notelpUser
 
+                tvprofileNama.text = namauser
+                tvprofileUsername.text = unameuser
+                tvprofileAlamat.text = alamatuser
+                tvprofileNoTelp.text = notelpuser
+                tvprofileEmail.text = emailuser
+            }
+
+            override fun onFailure(call: Call<ProfileResponseModel>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
 }
