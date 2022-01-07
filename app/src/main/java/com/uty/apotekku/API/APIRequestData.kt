@@ -60,4 +60,7 @@ interface APIRequestData {
     @FormUrlEncoded
     fun cekQtyAlkes(@Field("aksi") aksi: String, @Field("id_user") id_user: Int, @Field("id_alkes") id_obat: Int): Call<CekKuantitasResponseModel>
 
+    @POST("api.php")
+    @FormUrlEncoded
+    fun cekTotalBayarSemua(@Field("aksi") aksi: String, @Field("id_user") id_user: Int): Call<TotalBayarResponseModel>
 }
