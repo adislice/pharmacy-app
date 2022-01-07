@@ -146,6 +146,53 @@
                     android:layout_marginTop="@dimen/pad_md"
                     android:layout_marginBottom="@dimen/pad_md"
                     android:background="@color/white">
+                    <TextView
+                        android:id="@+id/tv_namapenerima"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Penerima"
+                        android:padding="@dimen/pad_sm"
+                        android:textSize="@dimen/text_md"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/et_namapenerima"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukkan Nama Penerima"
+                        app:layout_constraintTop_toBottomOf="@id/tv_namapenerima">
+                        <AutoCompleteTextView
+                            android:id="@+id/material_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:fontFamily="@font/montserrat"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_alamatpenerima"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat Penerima"
+                        android:padding="@dimen/pad_sm"
+                        android:textSize="@dimen/text_md"
+                        app:layout_constraintTop_toBottomOf="@id/et_namapenerima"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/et_alamatpenerima"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukkan Alamat Penerima"
+                        app:layout_constraintTop_toBottomOf="@id/tv_alamatpenerima">
+                        <AutoCompleteTextView
+                            android:id="@+id/material_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:fontFamily="@font/montserrat"/>
+                    </android.support.design.widget.TextInputLayout>
 
                     <TextView
                         android:id="@+id/checkout_payment_method_title"
@@ -157,7 +204,7 @@
                         android:text="Metode pembayaran"
                         android:textSize="@dimen/text_md"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/et_alamatpenerima" />
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/checkout_payment_method"

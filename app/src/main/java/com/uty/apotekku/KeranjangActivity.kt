@@ -58,7 +58,7 @@ class KeranjangActivity : AppCompatActivity() {
                 response: Response<KeranjangResponseModel>
             ) {
                 var krjStatus = response.body()!!.status
-                Toast.makeText(this@KeranjangActivity, id_user.toString(), Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@KeranjangActivity, id_user.toString(), Toast.LENGTH_SHORT).show()
                 if (krjStatus == true) {
 
                     var krjResult = response.body()!!.result
