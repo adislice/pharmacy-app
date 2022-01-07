@@ -82,18 +82,6 @@ class DetailProdukActivity : AppCompatActivity() {
                 etqty.setText(qty.toString())
             }
         }
-
-//        etqty.addTextChangedListener(object: TextWatcher {
-//            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
-////                qty = Integer.parseInt(s.toString())
-//            }
-//            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int) {
-//                // TODO
-//            }
-//            override fun afterTextChanged(s: Editable) {
-//                // TODO
-//            }
-//        })
     }
 
     private fun retrieveDetailObat(id_produk: Int){

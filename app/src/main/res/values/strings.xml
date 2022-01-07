@@ -23,6 +23,7 @@
     <!--Pendaftaran Akun-->
     <string name="regist_title_text">Daftar Akun</string>
     <string name="regist_hint_nama">Nama Lengkap</string>
+    <string name="regist_hint_uname">Username</string>
     <string name="regist_hint_email">Alamat Email</string>
     <string name="regist_hint_notelp">No. Telepon</string>
     <string name="regist_hint_password">Password</string>

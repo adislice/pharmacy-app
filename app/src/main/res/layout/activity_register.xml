@@ -10,7 +10,7 @@
         android:id="@+id/regist_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/pad_xxl"
+        android:layout_marginTop="@dimen/pad_xl"
         android:fontFamily="@font/playfair_display_bold"
         android:text="@string/regist_title_text"
         android:textColor="@color/text_main"
@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regist_title"
-        android:layout_marginTop="@dimen/pad_xl"
+        android:layout_marginTop="@dimen/pad_xxl"
         android:layout_marginBottom="@dimen/pad_xl"
         android:paddingStart="@dimen/pad_xl"
         android:paddingEnd="@dimen/pad_xl">
@@ -47,6 +47,28 @@
                 android:background="@drawable/bg_login_et"
                 android:fontFamily="@font/montserrat"
                 android:hint="@string/regist_hint_nama"
+                android:inputType="text"
+                android:paddingStart="@dimen/pad_md"
+                android:paddingEnd="@dimen/pad_md"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/text_md"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_lg"
+            app:hintEnabled="false">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/regist_et_uname"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/et_height"
+                android:autofillHints="Masukkan Namamu"
+                android:background="@drawable/bg_login_et"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/regist_hint_uname"
                 android:inputType="text"
                 android:paddingStart="@dimen/pad_md"
                 android:paddingEnd="@dimen/pad_md"
@@ -149,7 +171,7 @@
             android:id="@+id/regist_tos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/pad_xxl"
+            android:layout_marginBottom="@dimen/pad_xl"
             android:text="@string/regist_tos"
             android:onClick="onCheckboxClicked"/>
 

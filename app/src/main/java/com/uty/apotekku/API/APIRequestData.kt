@@ -38,6 +38,10 @@ interface APIRequestData {
 
     @POST("api.php")
     @FormUrlEncoded
+    fun cekRegisterUser(@Field("aksi") aksi: String, @Field("nama") nama: String, @Field("username") username: String, @Field("email") email: String, @Field("no_telp") notelp: String, @Field("password") password: String): Call<RegisterResponseModel>
+
+    @POST("api.php")
+    @FormUrlEncoded
     fun lihat_keranjang(@Field("aksi") aksi: String, @Field("id_user") id_user: Int): Call<KeranjangResponseModel>
 
     @POST("api.php")
