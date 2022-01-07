@@ -17,6 +17,8 @@ import com.uty.apotekku.Model.TotalBayarResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.NumberFormat
+import java.util.*
 
 class KeranjangActivity : AppCompatActivity() {
     private lateinit var keranjangRV: RecyclerView
@@ -88,7 +90,8 @@ class KeranjangActivity : AppCompatActivity() {
                 val status = response.body()!!.status
                 if(status){
                     val total = response.body()!!.result
-                    tv_total.text = total.toString()
+                    tv_total.text = rupiah(total.toDouble())
+//                    Toast.makeText(this@KeranjangActivity, total.toString(), Toast.LENGTH_SHORT).show()
 
                 }
 
@@ -99,5 +102,11 @@ class KeranjangActivity : AppCompatActivity() {
             }
 
         })
+    }
+    private fun rupiah(number: Double): String {
+        val localeID = Locale("in", "ID")
+        val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+        numberFormat.maximumFractionDigits = 0
+        return numberFormat.format(number)
     }
 }
