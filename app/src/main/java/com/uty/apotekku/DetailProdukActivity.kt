@@ -90,6 +90,8 @@ class DetailProdukActivity : AppCompatActivity() {
 
         if (kategori == "obat") {
             cekKuantitasObat(id_user, idobat)
+        } else if (kategori == "alkes") {
+            cekKuantitasAlkes(id_user, idalkes)
         }
 
     }
@@ -189,6 +191,28 @@ class DetailProdukActivity : AppCompatActivity() {
     private fun cekKuantitasObat(id_user: Int, id_obat: Int){
         val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
         val qtyResult : Call<CekKuantitasResponseModel> = ardData.cekQtyObat("cek_qty_obat", id_user, id_obat)
+        qtyResult.enqueue(object: Callback<CekKuantitasResponseModel> {
+            override fun onResponse(
+                call: Call<CekKuantitasResponseModel>,
+                response: Response<CekKuantitasResponseModel>
+            ) {
+                val status = response.body()!!.status
+                val qty = response.body()!!.qty
+                if (qty > 0) {
+                    etqty.setText(qty.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<CekKuantitasResponseModel>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    private fun cekKuantitasAlkes(id_user: Int, id_alkes: Int){
+        val ardData: APIRequestData = RetroServer.konekRetrofit()!!.create(APIRequestData::class.java)
+        val qtyResult : Call<CekKuantitasResponseModel> = ardData.cekQtyObat("cek_qty_alkes", id_user, id_alkes)
         qtyResult.enqueue(object: Callback<CekKuantitasResponseModel> {
             override fun onResponse(
                 call: Call<CekKuantitasResponseModel>,
