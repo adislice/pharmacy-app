@@ -66,7 +66,7 @@ class DetailProdukActivity : AppCompatActivity() {
         btnback.setOnClickListener {finish()}
         btnchart.setOnClickListener {bukaKeranjang(id_user)}
         btntambahkeranjang.setOnClickListener{
-            Toast.makeText(applicationContext, "kuantitas : " + qty, Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "kuantitas : " + etqty.text.toString().toInt(), Toast.LENGTH_SHORT).show()
         }
 
         etqty = findViewById(R.id.produk_qty)

@@ -11,7 +11,7 @@ class KeranjangAdapter(private val list: ArrayList<KeranjangModel>): RecyclerVie
 
     class Holder (view: View): RecyclerView.ViewHolder(view){
         val title: TextView = view.findViewById(R.id.tv_krj_nama_produk)
-        val jml: EditText = view.findViewById(R.id.et_krj_jumlah_produk)
+        val jml: EditText = view.findViewById(R.id.krj_qty)
         val price: TextView = view.findViewById(R.id.tv_krj_harga_produk)
         var kuantitas = jml.toString()
     }

@@ -9,6 +9,7 @@
     android:layout_marginBottom="5dp">
 
     <LinearLayout
+        android:id="@+id/krj_container_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -20,7 +21,7 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/krjcb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -83,49 +84,44 @@
                     android:fontFamily="@font/montserrat"
                     android:scrollbarSize="@dimen/text_md"/>
 
-                <RelativeLayout
-                    android:layout_width="130dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_btn"
-                    android:padding="5dp">
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_margin="@dimen/pad_sm">
 
-                    <ImageView
-                        android:id="@+id/btn_kurang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="5dp"
-                        app:srcCompat="@drawable/ic_baseline_remove_24"
-                        android:contentDescription="@string/keranjang_kurangi_jumlah_produk" />
+                    <ImageButton
+                        android:id="@+id/krj_qty_kurang"
+                        android:layout_width="@dimen/qty_add"
+                        android:layout_height="@dimen/qty_add"
+                        android:background="@drawable/bg_btn_qty"
+                        android:src="@drawable/ic_baseline_remove_24"
+                        android:layout_marginEnd="@dimen/pad_sm"
+                        android:contentDescription="@string/detail_produk_desc_tombol_kurangi_qty" />
 
                     <EditText
-                        android:id="@+id/et_krj_jumlah_produk"
+                        android:id="@+id/krj_qty"
                         android:layout_width="@dimen/et_height"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="5dp"
-                        android:background="@color/white"
-                        android:fontFamily="@font/montserrat"
-                        android:gravity="center"
+                        android:layout_height="@dimen/qty_add"
+                        android:layout_marginEnd="@dimen/pad_sm"
+                        android:background="@drawable/bg_et_qty"
+                        android:text="@string/detail_produk_qty_default"
+                        android:textAlignment="center"
                         android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:text="@string/keranjang_default_qty"
-                        android:textColor="@color/text_main"
-                        android:textSize="@dimen/text_md"
-                        android:textStyle="bold" />
+                        android:inputType="number" />
 
-                    <ImageView
-                        android:id="@+id/btn_tambah"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="5dp"
-                        app:srcCompat="@drawable/ic_baseline_add_24"
-                        android:contentDescription="@string/keranjang_tambah_jumlah_produk" />
+                    <ImageButton
+                        android:id="@+id/krj_qty_tambah"
+                        android:layout_width="@dimen/qty_add"
+                        android:layout_height="@dimen/qty_add"
+                        android:background="@drawable/bg_btn_qty"
+                        android:src="@drawable/ic_baseline_add_24"
+                        android:contentDescription="@string/detail_produk_desc_tombol_tambah_qty" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
